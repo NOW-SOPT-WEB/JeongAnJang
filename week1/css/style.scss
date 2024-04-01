@@ -1,0 +1,21 @@
+@import url("./reset.scss");
+
+@mixin flex(
+  $direction: row,
+  $wrap: nowrap,
+  $justifyContent: flex-start,
+  $alignItems: center
+) {
+  display: flex;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+  justify-content: $justifyContent;
+  align-items: $alignItems;
+}
+
+.header {
+  @include flex(row, nowrap, space-between, center);
+
+  background-color: skyblue;
+  font-size: 2rem;
+}

@@ -1,0 +1,12 @@
+@import url("./reset.scss");
+.header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: skyblue;
+  font-size: 2rem;
+}
+
+/*# sourceMappingURL=style.css.map */
