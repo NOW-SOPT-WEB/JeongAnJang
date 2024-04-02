@@ -24,14 +24,24 @@ header {
 //nav
 .nav {
   @include flex(column, nowrap, center, flex-start);
-  background-color: pink;
+  background-color: skyblue;
   position: fixed;
   top: 30%;
   margin-left: 2rem;
+  list-style-type: none;
 }
 
+//nav 태그 안 ul
 .nav ul {
+  @include flex(column, nowrap, center, center);
   list-style-type: none;
+  gap: 0.5rem;
+}
+
+//a 태그
+a {
+  text-decoration: none;
+  color: black;
 }
 
 //nav와 main을 묶는 wrapper
