@@ -1,4 +1,10 @@
 @import url("./reset.css");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 header {
   display: flex;
   flex-direction: row;
@@ -6,21 +12,23 @@ header {
   justify-content: center;
   align-items: center;
   font-size: 3rem;
+  height: 5rem;
   background-color: #02343f;
   color: #f0edcc;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+main {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .input_section {
   display: flex;
   position: relative;
   width: 30rem;
-  margin-left: 5rem;
   margin-top: 10rem;
 }
 
@@ -87,6 +95,42 @@ input:valid ~ span {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+}
+
+.todo_section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  margin-top: 5rem;
+}
+
+.todo_section > article {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo_section > article > p {
+  font-size: 2rem;
+  color: #02343f;
+}
+
+.detail_section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 19rem;
+  height: 5rem;
+  background-color: #ebe9ea;
+  border-radius: 2rem;
+  margin-top: 1.5rem;
 }
 
 /*# sourceMappingURL=style.css.map */

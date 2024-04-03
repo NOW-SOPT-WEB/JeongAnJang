@@ -13,28 +13,35 @@
   align-items: $alignItems;
 }
 
-//헤더
-header {
-  @include flex(row, nowrap, center, center);
-  font-size: 3rem;
-  background-color: #02343f;
-  color: #f0edcc;
-}
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+//헤더
+header {
+  @include flex(row, nowrap, center, center);
+  font-size: 3rem;
+  height: 5rem;
+  background-color: #02343f;
+  color: #f0edcc;
+}
+
+//메인 전체 구역 설정
+main {
+  @include flex(column, nowrap, center, center);
+}
+
+//투두 입력 인풋창 섹션
 .input_section {
   display: flex;
   position: relative;
   width: 30rem;
-  margin-left: 5rem;
   margin-top: 10rem;
 }
 
+//input 커스텀
 .input_section > input {
   font-size: 1.5rem;
   color: #222222;
@@ -94,4 +101,29 @@ input:valid ~ span {
 //+ 버튼
 .plus_btn_wrapper {
   @include flex(row, wrap, center, center);
+}
+
+//입력한 todo 섹션
+.todo_section {
+  @include flex(row, wrap, center, center);
+  gap: 5rem;
+  margin-top: 5rem;
+}
+
+.todo_section > article {
+  @include flex(column, nowrap, center, center);
+}
+
+.todo_section > article > p {
+  font-size: 2rem;
+  color: #02343f;
+}
+
+.detail_section {
+  @include flex(row, nowrap, center, center);
+  width: 19rem;
+  height: 5rem;
+  background-color: #ebe9ea;
+  border-radius: 2rem;
+  margin-top: 1.5rem;
 }
