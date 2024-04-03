@@ -12,13 +12,37 @@
   </head>
   <body>
     <header>TO DO LIST</header>
-    <section class="input_section">
-      <input type="text" required />
-      <label>Please enter your to do</label>
-      <span></span>
-      <div class="plus_btn_wrapper">
-        <i class="fa-solid fa-plus"></i>
-      </div>
-    </section>
+    <main>
+      <section class="input_section">
+        <input type="text" required />
+        <label>Please enter your to do</label>
+        <span></span>
+        <div class="plus_btn_wrapper">
+          <i class="fa-solid fa-plus"></i>
+        </div>
+      </section>
+      <section class="todo_section">
+        <article class="not_started_wrapper">
+          <p>Not Started</p>
+          <div class="detail_section">
+            <!-- positon fixed라 변경에 유연하지 않을듯 -->
+            <i
+              class="fa-solid fa-x"
+              style="margin-left: 15rem; position: fixed"
+            ></i>
+          </div>
+        </article>
+
+        <article class="done_section_wrapper">
+          <p>Done</p>
+          <div class="detail_section">
+            <i
+              class="fa-solid fa-x"
+              style="margin-left: 15rem; position: fixed"
+            ></i>
+          </div>
+        </article>
+      </section>
+    </main>
   </body>
 </html>
