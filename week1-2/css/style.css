@@ -1,3 +1,83 @@
 @import url("./reset.css");
+header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  background-color: #02343f;
+  color: #f0edcc;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.input_section {
+  position: relative;
+  width: 30rem;
+  margin-left: 5rem;
+  margin-top: 10rem;
+}
+
+.input_section > input {
+  font-size: 1.5rem;
+  color: #222222;
+  width: 30rem;
+  border: none;
+  border-bottom: solid #aaaaaa 1px;
+  padding-bottom: 1rem;
+  text-align: center;
+  position: relative;
+  background: none;
+  z-index: 5;
+}
+
+input::placeholder {
+  color: #aaaaaa;
+}
+
+input:focus {
+  outline: none;
+}
+
+.input_section > span {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  background-color: #666;
+  width: 0;
+  height: 0.2rem;
+  border-radius: 2px;
+  transform: translateX(-50%);
+  transition: 0.5s;
+}
+
+label {
+  position: absolute;
+  color: #aaa;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  bottom: 0.8rem;
+  transition: all 0.2s;
+}
+
+input:focus ~ label,
+input:valid ~ label {
+  font-size: 1.4rem;
+  bottom: 4rem;
+  color: #666;
+  font-weight: bold;
+}
+
+input:focus ~ span,
+input:valid ~ span {
+  width: 100%;
+}
 
 /*# sourceMappingURL=style.css.map */
