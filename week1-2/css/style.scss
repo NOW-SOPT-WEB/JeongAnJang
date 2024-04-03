@@ -28,6 +28,7 @@ header {
 }
 
 .input_section {
+  display: flex;
   position: relative;
   width: 30rem;
   margin-left: 5rem;
@@ -90,76 +91,7 @@ input:valid ~ span {
   width: 100%;
 }
 
-//할일 추가 인풋 섹션
-// .input_section {
-//   //   @include flex(row, nowrap, center, center);
-//   margin-top: 4rem;
-//   gap: 2rem;
-
-//   position: relative;
-//   width: 300px;
-//   margin-left: 50px;
-//   margin-top: 100px;
-// }
-
-// //인풋 커스텀
-// .input_section > input {
-//   font-size: 15px;
-//   color: #222222;
-//   width: 300px;
-//   border: none;
-//   border-bottom: solid #aaaaaa 1px;
-//   padding-bottom: 10px;
-//   text-align: center;
-//   position: relative;
-//   background: none;
-//   z-index: 5;
-
-//   input::placeholder {
-//     color: #aaaaaa;
-//   }
-//   input:focus {
-//     outline: none;
-//   }
-// }
-
-// .input_section > span {
-//   display: block;
-//   position: absolute;
-//   bottom: 0;
-//   left: 50%; /* right로만 바꿔주면 오 - 왼 */
-//   background-color: #666;
-//   width: 0;
-//   height: 2px;
-//   border-radius: 2px;
-//   transform: translateX(-50%);
-//   transition: 0.5s;
-// }
-
-// .input_section > label {
-//   position: absolute;
-//   color: #aaa;
-//   left: 50%;
-//   transform: translateX(-50%);
-//   font-size: 20px;
-//   bottom: 8px;
-//   transition: all 0.2s;
-// }
-
-// input:focus ~ label,
-// input:valid ~ label {
-//   font-size: 16px;
-//   bottom: 40px;
-//   color: #666;
-//   font-weight: bold;
-// }
-
-// input:focus ~ span,
-// input:valid ~ span {
-//   width: 100%;
-// }
-
-// //인풋 옆 X 버튼 wrapper
-// .x_btn_wrapper {
-//   background-color: #02343f;
-// }
+//+ 버튼
+.plus_btn_wrapper {
+  @include flex(row, wrap, center, center);
+}

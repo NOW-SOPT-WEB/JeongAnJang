@@ -17,6 +17,7 @@ header {
 }
 
 .input_section {
+  display: flex;
   position: relative;
   width: 30rem;
   margin-left: 5rem;
@@ -78,6 +79,14 @@ input:valid ~ label {
 input:focus ~ span,
 input:valid ~ span {
   width: 100%;
+}
+
+.plus_btn_wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 /*# sourceMappingURL=style.css.map */
