@@ -1,1 +1,14 @@
 @import url("./reset.css");
+
+@mixin flex(
+  $direction: row,
+  $wrap: nowrap,
+  $justifyContent: flex-start,
+  $alignItems: center
+) {
+  display: flex;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+  justify-content: $justifyContent;
+  align-items: $alignItems;
+}
