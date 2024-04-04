@@ -25,6 +25,11 @@ main {
   align-items: center;
 }
 
+p {
+  font-size: 2rem;
+  color: #02343f;
+}
+
 .input_section {
   display: flex;
   position: relative;
@@ -95,6 +100,7 @@ input:valid ~ span {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .todo_section {
@@ -115,22 +121,39 @@ input:valid ~ span {
   align-items: center;
 }
 
-.todo_section > article > p {
-  font-size: 2rem;
-  color: #02343f;
-}
-
 .detail_section {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
+  background-color: #ebe9ea;
   width: 19rem;
   height: 5rem;
-  background-color: #ebe9ea;
   border-radius: 2rem;
   margin-top: 1.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text-area {
+  width: 80%;
+  font-size: 1.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.x_icon_area {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 10%;
+  height: 2rem;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -33,6 +33,11 @@ main {
   @include flex(column, nowrap, center, center);
 }
 
+p {
+  font-size: 2rem;
+  color: #02343f;
+}
+
 //투두 입력 인풋창 섹션
 .input_section {
   display: flex;
@@ -101,6 +106,7 @@ input:valid ~ span {
 //+ 버튼
 .plus_btn_wrapper {
   @include flex(row, wrap, center, center);
+  cursor: pointer;
 }
 
 //입력한 todo 섹션
@@ -114,16 +120,33 @@ input:valid ~ span {
   @include flex(column, nowrap, center, center);
 }
 
-.todo_section > article > p {
-  font-size: 2rem;
-  color: #02343f;
-}
-
+//입력 받은 투두 섹션
 .detail_section {
   @include flex(row, nowrap, center, center);
+  background-color: #ebe9ea;
   width: 19rem;
   height: 5rem;
-  background-color: #ebe9ea;
   border-radius: 2rem;
   margin-top: 1.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+//입력 받은 투두 섹션 내 텍스트 구역
+.text-area {
+  width: 80%;
+  font-size: 1.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+//입력 받은 투두 섹션 내 아이콘 구역
+.x_icon_area {
+  @include flex(row, nowrap, center, center);
+  //사용자 터치, 클릭 영역 넓게 하기 위한 width height
+  width: 10%;
+  height: 2rem;
+  cursor: pointer;
 }
