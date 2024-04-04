@@ -1,5 +1,11 @@
 @import url("./reset.css");
 
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap");
+
+* {
+  font-family: "Merriweather", serif;
+}
+
 @mixin flex(
   $direction: row,
   $wrap: nowrap,
@@ -85,14 +91,14 @@ label {
   color: #aaa;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   bottom: 0.8rem;
   transition: all 0.2s;
 }
 
 input:focus ~ label,
 input:valid ~ label {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   bottom: 4rem;
   color: #666;
   font-weight: bold;
