@@ -25,6 +25,10 @@ header {
   z-index: 1;
 }
 
+header > h2 {
+  color: #f5d042;
+}
+
 //nav
 .nav {
   @include flex(column, nowrap, center, flex-start);
@@ -80,7 +84,23 @@ h2 {
 //슬라이드 애니메이션
 .slide_animation_section {
   display: flex;
-  animation: sliderAnimation 20s linear infinite;
+  overflow: hidden;
+  // animation: sliderAnimation 1s linear infinite;
+}
+
+.banner_list {
+  display: flex;
+  width: 100%;
+  animation: sliderAnimation 10s linear infinite;
+}
+
+.n1:last-child {
+  background-color: pink;
+}
+
+li {
+  list-style: none;
+  width: 100%;
 }
 
 @keyframes sliderAnimation {
@@ -89,7 +109,7 @@ h2 {
   }
 
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-100%);
   }
 }
 
