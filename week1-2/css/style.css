@@ -140,6 +140,7 @@ input:valid ~ span {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  animation: sectionAnimation 5s linear infinite;
 }
 
 .text-area {
@@ -159,6 +160,21 @@ input:valid ~ span {
   width: 10%;
   height: 2rem;
   cursor: pointer;
+}
+
+@keyframes sectionAnimation {
+  25% {
+    transform: scale(1.1);
+    transition: all 0.5s;
+  }
+  50% {
+    transform: scale(1);
+    transition: all 0.5s;
+  }
+  75% {
+    transform: scale(1.1);
+    transition: all 0.5s;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
