@@ -8,7 +8,7 @@ header {
   background-color: #0a174e;
   color: #f5d042;
   width: 100%;
-  height: 2rem;
+  height: 5rem;
   font-size: 1rem;
   position: fixed;
   z-index: 1;
@@ -87,7 +87,7 @@ h2 {
   background-color: pink;
 }
 
-li {
+ul > li {
   list-style: none;
   width: 100%;
 }
@@ -101,7 +101,6 @@ li {
   }
 }
 .slide_img {
-  width: 200%;
   height: 8rem;
 }
 
