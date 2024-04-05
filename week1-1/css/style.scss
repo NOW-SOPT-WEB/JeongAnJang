@@ -150,9 +150,6 @@ section > h2 {
       height: 20rem;
     }
   }
-  // @media screen and (max-width: 900px) {
-  //   grid-template-columns: repeat(1, 1fr);
-  // }
   @media screen and (max-width: 768px) {
     grid-template-columns: repeat(1, 1fr);
 
