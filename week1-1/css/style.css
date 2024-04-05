@@ -75,7 +75,7 @@ a {
 .slide_animation_section {
   display: flex;
   overflow: hidden;
-  max-width: 70%;
+  max-width: 60%;
 }
 
 .banner_list {
