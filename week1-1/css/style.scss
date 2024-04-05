@@ -19,50 +19,49 @@ $text-color: #f5d042;
 
 // header
 header {
-  @include flex(row, nowrap, space-between, center);
-  background-color: $background-color;
-  color: $text-color;
+  position: fixed;
   width: 100%;
   height: 5rem;
-  font-size: 1rem;
-  position: fixed;
-  z-index: 1;
-}
-
-header > h2 {
   color: $text-color;
+  background-color: $background-color;
+  font-size: 1rem;
+  z-index: 1;
+  @include flex(row, nowrap, space-around, center);
+
+  h2 {
+    color: $text-color;
+    font-size: 2rem;
+  }
 }
 
 //nav
 .nav {
-  @include flex(column, nowrap, center, flex-start);
-
-  background-color: #0a174e;
   position: fixed;
   top: 30%;
-  margin-left: 2rem;
+  background-color: $background-color;
+  // width: 10rem;
+  border-radius: 2rem;
   list-style-type: none;
-}
+  // margin-left: 2rem;
+  @include flex(column, nowrap, center, flex-start);
 
-.nav > h2 {
-  color: $text-color;
-}
+  h2 {
+    color: $text-color;
+    font-size: 2rem;
+  }
 
-//nav 태그 안 ul
-.nav ul {
-  @include flex(column, nowrap, center, center);
-  list-style-type: none;
-  gap: 0.5rem;
+  //nav 태그 안 ul
+  ul {
+    list-style-type: none;
+    gap: 0.5rem;
+    @include flex(column, nowrap, center, center);
+  }
 }
 
 //a 태그
 a {
-  text-decoration: none;
   color: #f5d042;
-}
-
-h2 {
-  color: #0a174e;
+  text-decoration: none;
 }
 
 //nav와 main을 묶는 wrapper
@@ -83,12 +82,14 @@ h2 {
   top: 4rem;
   width: 100%;
   height: 15rem;
+  @include flex(row, wrap, center, center);
 }
 
 //슬라이드 애니메이션
 .slide_animation_section {
   display: flex;
   overflow: hidden;
+  max-width: 70%;
 }
 
 .banner_list {
@@ -97,13 +98,15 @@ h2 {
   animation: sliderAnimation 10s linear infinite;
 }
 
-.n1:last-child {
-  background-color: pink;
+ul {
+  li {
+    list-style: none;
+    width: 100%;
+  }
 }
 
-ul > li {
-  list-style: none;
-  width: 100%;
+.banner_list .n1:last-child {
+  animation-delay: 10s;
 }
 
 @keyframes sliderAnimation {
@@ -125,12 +128,12 @@ ul > li {
 main {
   display: flex;
   flex-direction: column;
-  margin-left: 10rem;
-  padding: 5rem;
+  margin-left: 15rem;
+  // padding: 5rem;
 }
 
 section > h2 {
-  padding: 2rem;
+  padding-top: 5rem;
 }
 
 //상품 카드 전체 wrapper
@@ -147,23 +150,66 @@ section > h2 {
   }
   @media screen and (max-width: 1080px) {
     grid-template-columns: repeat(2, 1fr);
-    .product_card img {
-      width: 200%;
-      height: 20rem;
+
+    .product_card {
+      width: 100%;
+      // height: 20rem;
+      height: auto;
+    }
+
+    .product_card img,
+    .product_card i,
+    .product_card p {
+      width: 100%;
+      height: auto;
+      @include flex(column, nowrap, center, center);
     }
   }
   @media screen and (max-width: 768px) {
     grid-template-columns: repeat(1, 1fr);
 
-    .product_card img:first-child {
-      width: 400%;
-      height: 25rem;
+    // .product_card img:first-child {
+    //   width: 200%;
+    //   height: 25rem;
+    // }
+
+    .product_card {
+      width: 100%;
+      // height: 20rem;
+      height: auto;
+    }
+
+    .product_card img,
+    .product_card i,
+    .product_card p {
+      width: 100%;
+      height: auto;
+      @include flex(column, nowrap, center, center);
     }
   }
 }
 
 //상품 카드
 .product_card {
+  width: 13rem;
+  height: 17rem;
+  background-color: $background-color;
+  border-radius: 2rem;
+  @include flex(column, nowrap, center, center);
+
+  p {
+    margin: 0;
+    color: $text-color;
+  }
+
+  i {
+    color: $text-color;
+    // margin-top: 1rem;
+  }
+}
+
+.detail_product_card {
+  margin-top: 1rem;
   @include flex(column, nowrap, center, center);
 }
 
@@ -199,8 +245,8 @@ i:hover {
 
 //footer
 footer {
-  @include flex(column, nowrap, center, center);
   background-color: #0a174e;
+  @include flex(column, nowrap, center, center);
 }
 
 footer > h2 {
