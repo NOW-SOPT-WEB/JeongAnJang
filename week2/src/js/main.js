@@ -13,6 +13,7 @@ import reactDeepDive from "../assets/리액트 deepdive.jpeg";
 import adidasDarkBlue from "../assets/아디다스 다크블루.jpeg";
 import javascriptDeepDive from "../assets/자스 deepdive.jpeg";
 import checkShirt from "../assets/체크셔츠.jpeg";
+import HeaderView from "./views/HeaderView";
 
 const tag = "[main]";
 
@@ -20,12 +21,11 @@ document.addEventListener("DOMContentLoaded", main);
 
 function main() {
   const test = qs(".product_card");
-  console.log(tag, "adsfadf");
-  // test.innerHTML += `<img class='product_card_img' src='${dark}' alt='검정 반팔'/>`;
-
+  console.log(tag);
 
   const store = new Store(storage);
   const views = {
+    headerView: new HeaderView(),
     /**@todo views 하나씩 추가 */
   };
 
