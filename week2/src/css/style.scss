@@ -43,7 +43,7 @@ header {
   border-radius: 2rem;
   list-style-type: none;
   // margin-left: 2rem;
-  @include flex(column, nowrap, center, flex-start);
+  @include flex(column, nowrap, center, center);
 
   h2 {
     color: $text-color;
