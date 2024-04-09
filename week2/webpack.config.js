@@ -40,11 +40,7 @@ module.exports = {
       },
     ],
   },
-  // devServer: {
-  //   static: {
-  //     directory: path.join(__dirname, "/"),
-  //   },
-  // },
+
   devServer: {
     devMiddleware: { publicPath: "/dist" },
     static: { directory: path.resolve(__dirname) },
