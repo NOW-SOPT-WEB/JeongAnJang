@@ -1,15 +1,22 @@
 import storage from "./storage";
 import { qs } from "./utils/domHelper";
+import NavView from "./views/NavView";
 import View from "./views/View";
+import "../css/style.css";
 
 export default class App extends View {
   constructor() {
     super(qs("#app"));
+    console.log("App 실행");
+  }
+
+  mounted() {
+    console.log("App 내 mounted 실행");
+    new NavView(qs(".nav"));
   }
 
   template() {
-    console.log("App!!");
-    console.log(storage.productData);
+    console.log("App 내 template실행!!");
 
     return `
     <header>
@@ -46,3 +53,5 @@ export default class App extends View {
     //배열을 문자열로 변환
   }
 }
+
+new App();
