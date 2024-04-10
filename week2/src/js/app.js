@@ -1,8 +1,10 @@
 import storage from "./storage";
-import { qs } from "./utils/domHelper";
+import { on, qs } from "./utils/domHelper";
 import NavView from "./views/NavView";
 import View from "./views/View";
 import "../css/style.css";
+import MainSectionView from "./views/MainSectionView";
+import HeaderView from "./views/HeaderView";
 
 export default class App extends View {
   constructor() {
@@ -12,18 +14,15 @@ export default class App extends View {
 
   mounted() {
     console.log("App 내 mounted 실행");
+    new HeaderView(qs(".header"));
     new NavView(qs(".nav"));
+    new MainSectionView(qs("main"));
   }
 
   template() {
     console.log("App 내 template실행!!");
 
     return `
-    <header>
-      <i class="fa-solid fa-house fa-2x"></i>
-      <h2>정안이의 쇼핑몰</h2>
-      <i class="fa-solid fa-bars fa-2x"></i>
-    </header> 
     <section class="slide_section_wrapper">
     <div class="slide_animation_section">
         <ul class="banner_list n1">
@@ -50,7 +49,6 @@ export default class App extends View {
         </li>`
       )
       .join("");
-    //배열을 문자열로 변환
   }
 }
 
