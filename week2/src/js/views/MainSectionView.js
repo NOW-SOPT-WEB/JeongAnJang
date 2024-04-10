@@ -1,7 +1,16 @@
+import { MESSAGES } from "../constants";
 import storage from "../storage";
 import View from "./View";
 
 export default class MainSectionView extends View {
+  setEvent() {
+    this.addEvent("click", ".product_card", this.addCart);
+  }
+
+  addCart() {
+    alert(MESSAGES.CONFIRM_ADD_CART);
+  }
+
   template() {
     return `
         <section id="all">
@@ -19,6 +28,7 @@ export default class MainSectionView extends View {
         (items) => `
         <div class="product_card">
             <img
+            id=${items.id}
             class="product_card_img"
             src="${items.imageUrl}"
             alt="${items.name}"
