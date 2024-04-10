@@ -55,13 +55,11 @@ header {
     list-style-type: none;
     gap: 0.5rem;
     @include flex(column, nowrap, center, center);
-  }
-}
 
-//a 태그
-a {
-  color: #f5d042;
-  text-decoration: none;
+    div {
+      color: $text-color;
+    }
+  }
 }
 
 //nav와 main을 묶는 wrapper
