@@ -1,20 +1,21 @@
-import { qs } from "../utils/domHelper";
+import { HOME } from "../constants";
 import View from "./View";
 
-const tag = "headerView";
-
 export default class HeaderView extends View {
-  constructor() {
-    super(qs("#app"));
-    console.log(tag);
+  setEvent() {
+    this.addEvent("click", ".fa-house", this.navigateHome);
+  }
+
+  navigateHome() {
+    location.href = HOME;
   }
 
   template() {
-    console.log("헤더뷰템플릿 실행");
-    return `<header>
-    <i class="fa-solid fa-house fa-2x"></i>
-    <h2>정안이의 쇼핑몰</h2>
-    <i class="fa-solid fa-bars fa-2x"></i>
-  </header>`;
+    console.log("헤더뷰 template 실행");
+    return `
+            <i class="fa-solid fa-house fa-2x"></i>
+            <h2>정안이의 쇼핑몰</h2>
+            <i class="fa-solid fa-bars fa-2x"></i>
+        `;
   }
 }
