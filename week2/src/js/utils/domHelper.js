@@ -7,7 +7,7 @@ export function qs(selector, scope = document) {
 export function qsAll(selector, scope = document) {
   if (!selector) throw "no selector";
 
-  return Array.from(scope.querySelectorAll(selector));
+  return scope.querySelectorAll(selector);
 }
 
 export function on(target, eventName, handler) {
