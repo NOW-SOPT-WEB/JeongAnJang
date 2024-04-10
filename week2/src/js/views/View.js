@@ -1,4 +1,4 @@
-import { on, qsAll } from "../utils/domHelper";
+import { qsAll } from "../utils/domHelper";
 
 export default class View {
   constructor(element) {

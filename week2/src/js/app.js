@@ -1,5 +1,5 @@
 import storage from "./storage";
-import { on, qs } from "./utils/domHelper";
+import { qs } from "./utils/domHelper";
 import NavView from "./views/NavView";
 import View from "./views/View";
 import "../css/style.css";
@@ -24,15 +24,15 @@ export default class App extends View {
 
     return `
     <section class="slide_section_wrapper">
-    <div class="slide_animation_section">
+      <div class="slide_animation_section">
         <ul class="banner_list n1">
          ${this.getBannerSlideTemplate()}
         </ul>
         <ul class="banner_list n2">
-        ${this.getBannerSlideTemplate()}
+         ${this.getBannerSlideTemplate()}
         </ul>
-    </div>
-</section> 
+      </div>
+    </section> 
         `;
   }
 
