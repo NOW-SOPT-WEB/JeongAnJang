@@ -8,7 +8,7 @@ export default class MainSectionView extends View {
   }
 
   addCart() {
-    alert(MESSAGES.CONFIRM_ADD_CART);
+    confirm(MESSAGES.CONFIRM_ADD_CART);
   }
 
   template() {
