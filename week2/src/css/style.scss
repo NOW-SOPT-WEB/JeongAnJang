@@ -241,3 +241,64 @@ footer {
 footer > h2 {
   color: $text-color;
 }
+
+//사이드 바
+
+.inner_body {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  background: #222;
+  font-family: "Poppins", sans-serif;
+  z-index: 99;
+  position: relative;
+}
+
+.open {
+  display: flex;
+}
+
+.side_bar {
+  display: none;
+  position: fixed;
+  top: 0;
+  width: 15rem;
+  height: 100%;
+  background: #111;
+  transition: all 0.3s ease;
+}
+
+.inner_body button {
+  display: inline-block;
+  border: 1px solid #eee;
+  color: #eee;
+  background-color: transparent;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  margin: 0 0.5rem;
+}
+
+.side_bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.side_bar ul {
+  @include flex(column, nowrap, center, flex-start);
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.side_bar ul li {
+  width: 100%;
+  padding: 1rem 10%;
+}
+
+.side_bar ul li {
+  color: #eee;
+  text-decoration: none;
+}
