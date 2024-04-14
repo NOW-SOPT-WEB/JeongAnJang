@@ -1,5 +1,6 @@
 import { MESSAGES } from "../constants";
 import storage from "../storage";
+import { qs } from "../utils/domHelper";
 import View from "./View";
 
 export default class MainSectionView extends View {
@@ -7,8 +8,22 @@ export default class MainSectionView extends View {
     this.addEvent("click", ".product_card", this.addCart);
   }
 
-  addCart() {
+  addCart(event) {
     confirm(MESSAGES.CONFIRM_ADD_CART);
+    const targetProduct = event.target.closest(".product_card");
+    const targetProductId = qs("img", targetProduct).id;
+    const cartList = storage.productData.find(
+      (item) => item.id.toString() === targetProductId
+    );
+
+    if (cartList) {
+      localStorage.setItem("cartList", JSON.stringify(cartList));
+      alert(MESSAGES.COMPLETE_ADD_CART);
+    }
+  }
+
+  deleteCart() {
+    
   }
 
   template() {
