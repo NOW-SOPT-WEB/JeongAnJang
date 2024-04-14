@@ -2,7 +2,6 @@ import { qsAll } from "../utils/domHelper";
 
 export default class View {
   constructor(element, props) {
-    console.log("View 실행");
     this.element = element;
     this.props = props;
 
@@ -12,10 +11,6 @@ export default class View {
   }
 
   setEvent() {}
-
-  show(className) {
-    this.element.classList.add(className);
-  }
 
   render() {
     this.element.innerHTML = this.template();
