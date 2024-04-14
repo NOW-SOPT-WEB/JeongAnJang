@@ -12,19 +12,19 @@ export default class MainSectionView extends View {
     confirm(MESSAGES.CONFIRM_ADD_CART);
     const targetProduct = event.target.closest(".product_card");
     const targetProductId = qs("img", targetProduct).id;
-    const cartList = storage.productData.find(
+    const cartList = JSON.parse(localStorage.getItem("cartList")) || [];
+    const selectedProduct = storage.productData.find(
       (item) => item.id.toString() === targetProductId
     );
 
-    if (cartList) {
+    if (selectedProduct) {
+      cartList.push(selectedProduct);
       localStorage.setItem("cartList", JSON.stringify(cartList));
       alert(MESSAGES.COMPLETE_ADD_CART);
     }
   }
 
-  deleteCart() {
-    
-  }
+  deleteCart() {}
 
   template() {
     return `
