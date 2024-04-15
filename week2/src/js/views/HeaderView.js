@@ -19,9 +19,6 @@ export default class HeaderView extends View {
   }
 
   toggleSideBar() {
-    console.log("토글 사이드바!");
-    console.log(this.sideBarOpen);
-
     if (this.sideBarOpen) {
       console.log(this.sideBarOpen);
       this.closeSideBar();
