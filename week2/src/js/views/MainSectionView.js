@@ -21,6 +21,7 @@ export default class MainSectionView extends View {
       cartList.push(selectedProduct);
       localStorage.setItem("cartList", JSON.stringify(cartList));
       alert(MESSAGES.COMPLETE_ADD_CART);
+      /**@todo 중복된 상품일 시 벨리데이션 추가 */
     }
   }
 
