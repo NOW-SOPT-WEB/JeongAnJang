@@ -7,6 +7,7 @@ export default class HeaderView extends View {
   constructor(element, props) {
     super(element, props);
     this.sideBarOpen = false;
+    console.log("헤더뷰 내 props", this.props);
   }
 
   setEvent() {
@@ -21,6 +22,8 @@ export default class HeaderView extends View {
   }
 
   navigateCart() {
+    // const { cartList } = this.props;
+    // console.log("헤더뷰 내 카트리스트", cartList);
     const appPage = document.getElementById("app");
     appPage.innerHTML = "";
 
