@@ -23,10 +23,9 @@ export default class HeaderView extends View {
 
   navigateCart() {
     const appPage = document.getElementById("app");
-    console.log(appPage);
     appPage.innerHTML = "";
 
-    const cartView = new CartView(qs("#app"));
+    new CartView(qs("#app"));
   }
 
   navigateHome() {
