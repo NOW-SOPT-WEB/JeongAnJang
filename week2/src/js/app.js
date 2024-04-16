@@ -12,10 +12,22 @@ export default class App extends View {
     super(qs("#app"));
   }
 
-  mounted() {
-    const { filterCategory, renderFilterdProducts } = this;
+  setUp() {
+    this.initialState = {
+      cartList: JSON.parse(localStorage.getItem("cartList")),
+    };
+    this.state = this.initialState;
+    console.log("this.state2", this.state);
+  }
 
-    new HeaderView(qs("header"));
+  mounted() {
+    const {
+      state: { cartList },
+      filterCategory,
+      renderFilterdProducts,
+    } = this;
+
+    new HeaderView(qs("header"), { cartList });
     new BannerView(qs(".slide_animation_section"));
     new NavView(qs(".nav"), {
       filterCategory: filterCategory.bind(this),

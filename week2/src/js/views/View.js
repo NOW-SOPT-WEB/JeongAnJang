@@ -1,16 +1,19 @@
 import { qsAll } from "../utils/domHelper";
 
 export default class View {
-  constructor(element, props) {
+  constructor(element, props = {}) {
     this.element = element;
     this.props = props;
 
     if (!element) throw "no element";
+    this.setUp();
     this.setEvent();
     this.render();
   }
 
   setEvent() {}
+
+  setUp() {}
 
   render() {
     this.element.innerHTML = this.template();
@@ -33,5 +36,10 @@ export default class View {
     });
 
     return this;
+  }
+
+  setState(newState) {
+    this.state = { ...this.state, ...newState };
+    this.render();
   }
 }
