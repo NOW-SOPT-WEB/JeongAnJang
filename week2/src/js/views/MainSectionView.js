@@ -9,19 +9,22 @@ export default class MainSectionView extends View {
   }
 
   addCart(event) {
-    confirm(MESSAGES.CONFIRM_ADD_CART);
-    const targetProduct = event.target.closest(".product_card");
-    const targetProductId = qs("img", targetProduct).id;
-    const cartList = JSON.parse(localStorage.getItem("cartList")) || [];
-    const selectedProduct = storage.productData.find(
-      (item) => item.id.toString() === targetProductId
-    );
-
-    if (selectedProduct) {
-      cartList.push(selectedProduct);
-      localStorage.setItem("cartList", JSON.stringify(cartList));
-      alert(MESSAGES.COMPLETE_ADD_CART);
-      /**@todo 중복된 상품일 시 벨리데이션 추가 */
+    const userConfirmed = confirm(MESSAGES.CONFIRM_ADD_CART);
+    if (userConfirmed) {
+      const targetProduct = event.target.closest(".product_card");
+      const targetProductId = qs("img", targetProduct).id;
+      const cartList = JSON.parse(localStorage.getItem("cartList")) || [];
+      const selectedProduct = storage.productData.find(
+        (item) => item.id.toString() === targetProductId
+      );
+      if (selectedProduct) {
+        cartList.push(selectedProduct);
+        localStorage.setItem("cartList", JSON.stringify(cartList));
+        alert(MESSAGES.COMPLETE_ADD_CART);
+        /**@todo 중복된 상품일 시 벨리데이션 추가 & 코드정리*/
+      }
+    } else {
+      alert("취소되었습니다.");
     }
   }
 
