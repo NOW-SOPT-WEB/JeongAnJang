@@ -10,7 +10,6 @@ export default class HeaderView extends View {
   }
 
   setEvent() {
-    console.log("this.props", this.props);
     this.addEvent("click", ".fa-house", this.navigateHome);
     this.addEvent("click", ".fa-bars", this.toggleSideBar.bind(this));
     this.addEvent(
@@ -43,14 +42,12 @@ export default class HeaderView extends View {
   }
 
   openSideBar() {
-    qs(".inner_body").classList.add("open");
     qs(".side_bar").classList.add("open");
 
     this.sideBarOpen = true;
   }
 
   closeSideBar() {
-    qs(".inner_body").classList.remove("open");
     qs(".side_bar").classList.remove("open");
 
     this.sideBarOpen = false;
