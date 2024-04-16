@@ -303,4 +303,19 @@ footer > h2 {
   text-decoration: none;
 }
 
+.product_list_title {
+  font-size: 5rem;
+}
+
+.img_card {
+  width: 5rem;
+  height: 5rem;
+}
+
+.cart_table_wrapper {
+  width: 50%;
+  height: 25rem;
+  overflow: auto;
+}
+
 /*# sourceMappingURL=style.css.map */
