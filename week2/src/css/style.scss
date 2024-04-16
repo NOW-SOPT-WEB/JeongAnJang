@@ -245,7 +245,7 @@ footer > h2 {
 //사이드 바
 
 .inner_body {
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -254,21 +254,30 @@ footer > h2 {
   font-family: "Poppins", sans-serif;
   z-index: 99;
   position: relative;
+  transition: all 0.3s ease;
 }
 
-.open {
+.inner_body.open {
   display: flex;
 }
 
 .side_bar {
-  display: none;
+  display: flex;
+  flex-direction: column;
   position: fixed;
   top: 0;
   right: 0;
   width: 15rem;
   height: 100%;
+  gap: 20rem;
   background: #111;
-  transition: all 0.3s ease;
+  transform: translateX(100%);
+  transition: all 0.7s ease;
+}
+
+.side_bar.open {
+  transition: all 0.7s ease;
+  transform: translateX(0);
 }
 
 .inner_body button {
@@ -279,13 +288,6 @@ footer > h2 {
   padding: 1rem 2rem;
   cursor: pointer;
   margin: 0 0.5rem;
-}
-
-.side_bar {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .side_bar ul {

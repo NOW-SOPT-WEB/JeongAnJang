@@ -12,6 +12,11 @@ export default class HeaderView extends View {
     console.log("this.props", this.props);
     this.addEvent("click", ".fa-house", this.navigateHome);
     this.addEvent("click", ".fa-bars", this.toggleSideBar.bind(this));
+    this.addEvent(
+      "click",
+      ".side_bar_close_btn",
+      this.toggleSideBar.bind(this)
+    );
   }
 
   navigateHome() {
@@ -24,18 +29,21 @@ export default class HeaderView extends View {
       this.closeSideBar();
     } else {
       console.log(this.sideBarOpen);
-
       this.openSideBar();
     }
   }
 
   openSideBar() {
     qs(".inner_body").classList.add("open");
+    qs(".side_bar").classList.add("open");
+
     this.sideBarOpen = true;
   }
 
   closeSideBar() {
     qs(".inner_body").classList.remove("open");
+    qs(".side_bar").classList.remove("open");
+
     this.sideBarOpen = false;
   }
 
@@ -45,14 +53,18 @@ export default class HeaderView extends View {
             <h2>정안이의 쇼핑몰</h2>
             <i class="fa-solid fa-bars fa-2x"></i>
             <div class="inner_body">
-              <aside class="side_bar js-side_bar">
-                <ul>
-                  <li class="side_bar_home">Home</li>
-                  <li class="side_bar_product">Product</li>
-                </ul>
+            <aside class="side_bar js-side_bar">
+              <div>
                 <button class="side_bar_close_btn">SideBar Close</button>
+              </div>
+               <ul>
+                <li class="side_bar_home">Home</li>
+                <li class="side_bar_product">Product</li>
+              </ul>
               </aside>
              </div>
         `;
   }
 }
+
+/**@todo 사이드 바 애니메이션 */
