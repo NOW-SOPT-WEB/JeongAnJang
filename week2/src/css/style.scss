@@ -37,7 +37,10 @@ header {
 //nav
 .nav {
   position: fixed;
+  width: 10%;
+  height: 20%;
   top: 30%;
+  gap: 1rem;
   background-color: $background-color;
   border-radius: 2rem;
   list-style-type: none;

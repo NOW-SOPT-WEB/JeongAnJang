@@ -20,7 +20,10 @@ header h2 {
 
 .nav {
   position: fixed;
+  width: 10%;
+  height: 20%;
   top: 30%;
+  gap: 1rem;
   background-color: #0a174e;
   border-radius: 2rem;
   list-style-type: none;
