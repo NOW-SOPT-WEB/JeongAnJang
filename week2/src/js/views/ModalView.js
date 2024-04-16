@@ -2,6 +2,9 @@ import View from "./View";
 export default class ModalView extends View {
   setUp() {
     this.selectedProducts = this.props;
+    this.selectedProductsList = Object.keys(this.selectedProducts).map(
+      (key) => this.selectedProducts[key]
+    );
   }
 
   template() {
@@ -12,7 +15,7 @@ export default class ModalView extends View {
             ${this.getSelectedProductTemplate()}
         </div>
         <button class="close_btn">Close</button>
-
+        <div class="total_amount">총합 금액:${this.totalAmount()} </div>
       </dialog>
     `;
   }
@@ -26,20 +29,30 @@ export default class ModalView extends View {
       )
     );
 
-    return Object.keys(this.selectedProducts)
-      .map((key) => this.selectedProducts[key])
+    return this.selectedProductsList
       .map(
         (item) =>
           `
               <div class="product_info">
-                <img class="modal_product_img" src="${item.imageUrl}" alt="${item.name}">
+                <img class="modal_product_img" src="${item.imageUrl}" alt="${
+            item.name
+          }">
                 <div>
                   <p>Name: ${item.name}</p>
-                  <p>Price: ${item.price}</p>
+                  <p>Price: ${item.price.toLocaleString()}</p>
                 </div>
               </div>
             `
       )
       .join("");
+  }
+
+  totalAmount() {
+    let sum = 0;
+    this.selectedProductsList.forEach((item) => {
+      sum += item.price;
+    });
+    console.log("total", sum);
+    return sum.toLocaleString();
   }
 }
