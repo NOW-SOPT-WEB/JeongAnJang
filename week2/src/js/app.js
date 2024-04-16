@@ -6,6 +6,7 @@ import "../css/style.css";
 import BannerView from "./views/BannerView";
 import MainSectionView from "./views/MainSectionView";
 import storage from "./storage";
+import { HOME } from "./constants";
 
 export default class App extends View {
   constructor() {
@@ -25,9 +26,13 @@ export default class App extends View {
       state: { cartList },
       filterCategory,
       renderFilterdProducts,
+      navigateHome,
     } = this;
 
-    new HeaderView(qs("header"), { cartList });
+    new HeaderView(qs("header"), {
+      cartList,
+      navigateHome: navigateHome.bind(this),
+    });
     new BannerView(qs(".slide_animation_section"));
     new NavView(qs(".nav"), {
       filterCategory: filterCategory.bind(this),
@@ -85,6 +90,14 @@ export default class App extends View {
           `
       )
       .join("");
+  }
+
+  openModal() {
+    qs(".purchase_modal").showModal();
+  }
+
+  navigateHome() {
+    location.href = HOME;
   }
 }
 

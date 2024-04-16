@@ -11,7 +11,8 @@ export default class HeaderView extends View {
   }
 
   setEvent() {
-    this.addEvent("click", ".fa-house", this.navigateHome);
+    const { navigateHome } = this.props;
+    this.addEvent("click", ".fa-house", navigateHome);
     this.addEvent("click", ".fa-bars", this.toggleSideBar.bind(this));
     this.addEvent(
       "click",
@@ -30,10 +31,6 @@ export default class HeaderView extends View {
     new CartView(qs("#app"));
   }
 
-  navigateHome() {
-    location.href = HOME;
-  }
-
   toggleSideBar() {
     if (this.sideBarOpen) {
       console.log(this.sideBarOpen);
@@ -46,7 +43,6 @@ export default class HeaderView extends View {
 
   openSideBar() {
     qs(".side_bar").classList.add("open");
-
     this.sideBarOpen = true;
   }
 
