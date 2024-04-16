@@ -13,7 +13,7 @@ export default class CartView extends View {
 
   setEvent() {
     this.addEvent("click", ".delete_btn", this.deleteCart.bind(this));
-    this.addEvent("click", ".purchase_btn", this.openModal);
+    this.addEvent("click", ".purchase_btn", this.openModal.bind(this));
     this.addEvent("click", ".navigate_home_btn", this.navigateHome);
     this.addEvent("click", "#all_checkbox", this.handleAllCheckbox);
   }
@@ -24,12 +24,32 @@ export default class CartView extends View {
   }
 
   navigateHome() {
+    /**@todo 중복 함수라 제거 후 props로 내려받아서 공용사용? */
     location.href = HOME;
   }
 
+  getSelectedProducts() {
+    const checkboxes = qsAll(".item_checkbox");
+    const selectedProducts = [];
+
+    checkboxes.forEach((checkbox) => {
+      if (checkbox.checked) {
+        const productId = checkbox.closest(".detail_item").id;
+        const product = this.cartList.find(
+          (item) => item.id.toString() === productId
+        );
+        console.log("product", product);
+        if (product) {
+          selectedProducts.push(product);
+        }
+      }
+    });
+    return selectedProducts;
+  }
+
   openModal() {
-    new ModalView(qs(".purchase_modal"));
-    console.log(".product_list_modal", qs(".product_list_modal"));
+    const selectedProducts = this.getSelectedProducts();
+    new ModalView(qs(".purchase_modal"), selectedProducts);
     qs(".product_list_modal").showModal();
   }
 
