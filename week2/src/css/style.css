@@ -344,4 +344,9 @@ footer > h2 {
   gap: 5rem;
 }
 
+.modal_product_img {
+  width: 7rem;
+  height: 7rem;
+}
+
 /*# sourceMappingURL=style.css.map */

@@ -335,3 +335,8 @@ footer > h2 {
   @include flex(column, nowrap, center, center);
   gap: 5rem;
 }
+
+.modal_product_img {
+  width: 7rem;
+  height: 7rem;
+}
