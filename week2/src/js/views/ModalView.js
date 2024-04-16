@@ -1,3 +1,4 @@
+import { qs } from "../utils/domHelper";
 import View from "./View";
 export default class ModalView extends View {
   setUp() {
@@ -7,6 +8,14 @@ export default class ModalView extends View {
     );
   }
 
+  setEvent() {
+    this.addEvent("click", ".close_btn", this.closeModal);
+  }
+
+  closeModal() {
+    qs(".product_list_modal").close();
+  }
+
   template() {
     console.log("template 내 this", this.selectedProducts);
     return `
@@ -14,8 +23,8 @@ export default class ModalView extends View {
         <div class="modal_content">
             ${this.getSelectedProductTemplate()}
         </div>
-        <button class="close_btn">Close</button>
         <div class="total_amount">총합 금액:${this.totalAmount()} </div>
+        <button class="close_btn">Close</button>
       </dialog>
     `;
   }
@@ -34,9 +43,9 @@ export default class ModalView extends View {
         (item) =>
           `
               <div class="product_info">
-                <img class="modal_product_img" src="${item.imageUrl}" alt="${
-            item.name
-          }">
+                <img class="modal_product_img" 
+                     src="${item.imageUrl}" 
+                     alt="${item.name}">
                 <div>
                   <p>Name: ${item.name}</p>
                   <p>Price: ${item.price.toLocaleString()}</p>
@@ -52,7 +61,6 @@ export default class ModalView extends View {
     this.selectedProductsList.forEach((item) => {
       sum += item.price;
     });
-    console.log("total", sum);
     return sum.toLocaleString();
   }
 }
