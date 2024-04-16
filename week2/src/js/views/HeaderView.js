@@ -1,5 +1,6 @@
 import { HOME } from "../constants";
 import { qs } from "../utils/domHelper";
+import CartView from "./CartView";
 import View from "./View";
 
 export default class HeaderView extends View {
@@ -17,6 +18,15 @@ export default class HeaderView extends View {
       ".side_bar_close_btn",
       this.toggleSideBar.bind(this)
     );
+    this.addEvent("click", ".side_bar_product", this.navigateCart);
+  }
+
+  navigateCart() {
+    const appPage = document.getElementById("app");
+    console.log(appPage);
+    appPage.innerHTML = "";
+
+    const cartView = new CartView(qs("#app"));
   }
 
   navigateHome() {
@@ -66,5 +76,3 @@ export default class HeaderView extends View {
         `;
   }
 }
-
-/**@todo 사이드 바 애니메이션 */
