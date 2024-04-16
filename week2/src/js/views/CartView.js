@@ -1,8 +1,29 @@
+import { qs } from "../utils/domHelper";
 import View from "./View";
 
 export default class CartView extends View {
+  constructor(element, props) {
+    super(element, props);
+    this.cartList = JSON.parse(localStorage.getItem("cartList")) || [];
+    // console.log("카트 뷰 내 props", props);
+  }
 
-  
+  setEvent() {
+    this.addEvent("click", ".delete_btn", this.deleteCart.bind(this));
+  }
+
+  deleteCart(event) {
+    console.log("deleteCart 내 this.cartList1", this.cartList);
+    const targetProduct = event.target.closest(".detail_item");
+    const targetProductId = targetProduct.id;
+    this.cartList = this.cartList.filter(
+      (item) => item.id.toString() !== targetProductId
+    );
+    console.log("deleteCart 내 this.cartList2", this.cartList);
+
+    localStorage.setItem("cartList", JSON.stringify(this.cartList));
+    targetProduct.remove();
+  }
 
   template() {
     return `
@@ -28,19 +49,21 @@ export default class CartView extends View {
   }
 
   getCartItemTemplate() {
+    /**@todo 로컬스토리지 값을 상태로 변경해서 props 내려주기 */
     const cartList = localStorage.getItem("cartList");
     const parseCartList = JSON.parse(cartList);
-    console.log(parseCartList);
     return parseCartList
       .map(
         (item) =>
           `
-          <tr>
+          <tr id=${item.id} class="detail_item">
           <td><input type="checkbox" class="item_checkbox"></td>
-          <td><img class="img_card" src="${item.imageUrl}" alt="${item.name}" /></td>
+          <td><img class="img_card" src="${item.imageUrl}" alt="${
+            item.name
+          }" /></td>
           <td>${item.name}</td>
           <td>${item.category}</td>
-          <td>${item.price}</td>
+          <td>${item.price.toLocaleString()}</td>
           <td><button type="button" class="delete_btn">삭제하기</button></td>
         </tr>
     `
