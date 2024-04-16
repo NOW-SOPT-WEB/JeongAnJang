@@ -54,7 +54,7 @@ export default class MainSectionView extends View {
             />
             <i class="fa-solid fa-heart"></i>
             <p>${items.name}</p>
-            <p>${items.price}</p>
+            <p>${items.price.toLocaleString()}원</p>
         </div>
     `
       )
