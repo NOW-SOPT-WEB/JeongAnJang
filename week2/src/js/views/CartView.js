@@ -1,14 +1,36 @@
+import { HOME } from "../constants";
+import { qs, qsAll } from "../utils/domHelper";
+import ModalView from "./ModalView";
 import View from "./View";
 
 export default class CartView extends View {
   constructor(element, props) {
+    /**@todo props로 전달받게 수정 및 constructor 제거 */
     super(element, props);
     this.cartList = JSON.parse(localStorage.getItem("cartList")) || [];
-    // console.log("카트 뷰 내 props", props);
+    console.log("카트 뷰 내 props", props);
   }
 
   setEvent() {
     this.addEvent("click", ".delete_btn", this.deleteCart.bind(this));
+    this.addEvent("click", ".purchase_btn", this.openModal);
+    this.addEvent("click", ".navigate_home_btn", this.navigateHome);
+    this.addEvent("click", "#all_checkbox", this.handleAllCheckbox);
+  }
+
+  handleAllCheckbox() {
+    const checkboxes = qsAll(".item_checkbox");
+    checkboxes.forEach((checkbox) => (checkbox.checked = event.target.checked));
+  }
+
+  navigateHome() {
+    location.href = HOME;
+  }
+
+  openModal() {
+    new ModalView(qs(".purchase_modal"));
+    console.log(".product_list_modal", qs(".product_list_modal"));
+    qs(".product_list_modal").showModal();
   }
 
   deleteCart(event) {
@@ -41,10 +63,12 @@ export default class CartView extends View {
           </tr>
         </thead>
         <tbody>
+        <td><input type="checkbox" id="all_checkbox" class="item_checkbox"></td>
           ${this.getCartItemTemplate()}
         </tbody>
       </table>
       </div>
+      <div class="purchase_modal"></div>
       ${this.getButtonTemplate()}
       </div>
     `;
@@ -54,6 +78,7 @@ export default class CartView extends View {
     /**@todo 로컬스토리지 값을 상태로 변경해서 props 내려주기  근데 여기서 this.cartList는 왜 Undefined임?*/
     const cartList = localStorage.getItem("cartList");
     const parseCartList = JSON.parse(cartList);
+    console.log(parseCartList);
     return parseCartList
       .map(
         (item) =>
