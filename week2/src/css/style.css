@@ -17,6 +17,9 @@ header h2 {
   color: #f5d042;
   font-size: 2rem;
 }
+header i {
+  cursor: pointer;
+}
 
 .nav {
   position: fixed;
@@ -285,6 +288,9 @@ footer > h2 {
   cursor: pointer;
   margin: 0 0.5rem;
 }
+.inner_body button:hover {
+  color: #f5d042;
+}
 
 .side_bar ul {
   display: flex;
@@ -299,6 +305,10 @@ footer > h2 {
 .side_bar ul li {
   width: 100%;
   padding: 1rem 10%;
+  cursor: pointer;
+}
+.side_bar ul li:hover {
+  color: #f5d042;
 }
 
 .side_bar ul li {

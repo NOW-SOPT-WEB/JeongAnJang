@@ -32,6 +32,10 @@ header {
     color: $text-color;
     font-size: 2rem;
   }
+
+  i {
+    cursor: pointer;
+  }
 }
 
 //nav
@@ -291,6 +295,10 @@ footer > h2 {
   padding: 1rem 2rem;
   cursor: pointer;
   margin: 0 0.5rem;
+
+  &:hover {
+    color: $text-color;
+  }
 }
 
 .side_bar ul {
@@ -302,6 +310,11 @@ footer > h2 {
 .side_bar ul li {
   width: 100%;
   padding: 1rem 10%;
+  cursor: pointer;
+
+  &:hover {
+    color: $text-color;
+  }
 }
 
 .side_bar ul li {
