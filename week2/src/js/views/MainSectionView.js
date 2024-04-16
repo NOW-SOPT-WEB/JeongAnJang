@@ -24,7 +24,7 @@ export default class MainSectionView extends View {
         /**@todo 중복된 상품일 시 벨리데이션 추가 & 코드정리*/
       }
     } else {
-      alert("취소되었습니다.");
+      alert(MESSAGES.CANCEL_ADD_CART);
     }
   }
 
