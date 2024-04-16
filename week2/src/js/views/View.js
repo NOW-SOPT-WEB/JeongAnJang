@@ -3,7 +3,7 @@ import { qsAll } from "../utils/domHelper";
 export default class View {
   constructor(element, props = {}) {
     this.element = element;
-    this.props = props;
+    this.props = { ...props };
 
     if (!element) throw "no element";
     this.setUp();
