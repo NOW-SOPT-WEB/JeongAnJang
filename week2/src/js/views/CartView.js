@@ -17,6 +17,11 @@ export default class CartView extends View {
     this.addEvent("click", ".navigate_home_btn", this.navigateHome.bind(this));
     this.addEvent("click", "#all_checkbox", this.handleAllCheckbox.bind(this));
     this.addEvent("click", ".fa-house", this.navigateHome.bind(this));
+    this.addEvent(
+      "click",
+      ".all_delete_btn",
+      this.deleteAllCheckedItems.bind(this)
+    );
   }
 
   handleAllCheckbox(event) {
@@ -68,6 +73,20 @@ export default class CartView extends View {
     this.render();
   }
 
+  deleteAllCheckedItems() {
+    const checkboxes = qsAll(".item_checkbox");
+    checkboxes.forEach((checkbox) => {
+      if (checkbox.checked) {
+        const productId = checkbox.closest(".detail_item").id;
+        this.cartList = this.cartList.filter(
+          (item) => item.id.toString() !== productId
+        );
+      }
+    });
+    localStorage.setItem("cartList", JSON.stringify(this.cartList));
+    this.render();
+  }
+
   template() {
     /**@todo 헤더가 headerView랑 겹치는데 방법이 없을까 */
     return `
@@ -85,7 +104,7 @@ export default class CartView extends View {
               </tr>
             </thead>
             <tbody>
-             <td><input type="checkbox" id="all_checkbox"></td>
+             <td><input type="checkbox" id="all_checkbox"><button type="button" class="all_delete_btn">체크된 것들 삭제하기</button></td>
              ${this.getCartItemTemplate()}
             </tbody>
           </table>
