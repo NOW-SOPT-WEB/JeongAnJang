@@ -67,7 +67,6 @@ export default class CartView extends View {
     this.cartList = this.cartList.filter(
       (item) => item.id.toString() !== targetProductId
     );
-    console.log("deleteCart 내 this.cartList2", this.cartList);
 
     localStorage.setItem("cartList", JSON.stringify(this.cartList));
     this.render();
@@ -118,7 +117,6 @@ export default class CartView extends View {
   getCartItemTemplate() {
     const cartList = localStorage.getItem("cartList");
     const parseCartList = JSON.parse(cartList);
-    console.log(parseCartList);
     return parseCartList
       .map(
         (item) =>

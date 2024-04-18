@@ -107,7 +107,6 @@ export default class App extends View {
   }
 
   navigateCart() {
-    console.log("네비게이트 this", this);
     const appPage = document.getElementById("app");
     appPage.innerHTML = "";
 

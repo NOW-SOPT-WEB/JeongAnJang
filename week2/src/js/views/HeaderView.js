@@ -5,16 +5,12 @@ import View from "./View";
 
 export default class HeaderView extends View {
   setUp() {
-    console.log("헤더 뷰 내 this", this);
     this.navigateHome = this.props.navigateHome;
     this.navigateCart = this.props.navigateCart;
     this.cartList = this.props.cartList;
   }
 
   setEvent() {
-    console.log("헤더 뷰 내 this.props", this.props);
-    console.log("헤더 뷰 내 this.cartList", this.cartList);
-
     this.addEvent("click", ".fa-house", this.navigateHome);
     this.addEvent("click", ".fa-bars", this.openSideBar.bind(this));
     this.addEvent("click", ".side_bar_close_btn", this.closeSideBar.bind(this));
