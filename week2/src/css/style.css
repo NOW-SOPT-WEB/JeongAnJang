@@ -326,11 +326,6 @@ footer > h2 {
 }
 
 .cart_table_wrapper {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
   height: 25rem;
   gap: 4rem;
   overflow: auto;
@@ -351,6 +346,7 @@ footer > h2 {
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
+  height: 50rem;
   gap: 5rem;
 }
 

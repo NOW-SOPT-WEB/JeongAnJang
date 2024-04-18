@@ -333,7 +333,7 @@ footer > h2 {
 }
 
 .cart_table_wrapper {
-  @include flex(column, nowrap, center, center);
+  // @include flex(column, nowrap, center, center);
   height: 25rem;
   gap: 4rem;
   overflow: auto;
@@ -346,6 +346,7 @@ footer > h2 {
 
 .cart_page_wrapper {
   @include flex(column, nowrap, center, center);
+  height: 50rem;
   gap: 5rem;
 }
 
