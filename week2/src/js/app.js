@@ -7,6 +7,7 @@ import BannerView from "./views/BannerView";
 import MainSectionView from "./views/MainSectionView";
 import storage from "./storage";
 import { HOME } from "./constants";
+import CartView from "./views/CartView";
 
 export default class App extends View {
   constructor() {
@@ -18,7 +19,7 @@ export default class App extends View {
       cartList: JSON.parse(localStorage.getItem("cartList")),
     };
     this.state = this.initialState;
-    console.log("this.state2", this.state);
+    console.log("App 내 this.state", this.state);
   }
 
   mounted() {
@@ -27,18 +28,23 @@ export default class App extends View {
       filterCategory,
       renderFilterdProducts,
       navigateHome,
+      navigateCart,
+      openModal,
     } = this;
 
     new HeaderView(qs("header"), {
       cartList,
       navigateHome: navigateHome.bind(this),
+      navigateCart: navigateCart.bind(this),
     });
     new BannerView(qs(".slide_animation_section"));
     new NavView(qs(".nav"), {
       filterCategory: filterCategory.bind(this),
       renderFilterdProducts: renderFilterdProducts.bind(this),
     });
-    new MainSectionView(qs(".main"));
+    new MainSectionView(qs(".main"), {
+      navigateCart: navigateCart.bind(this),
+    });
   }
 
   template() {
@@ -93,11 +99,19 @@ export default class App extends View {
   }
 
   openModal() {
-    qs(".purchase_modal").showModal();
+    qs("product_list_modal").showModal();
   }
 
   navigateHome() {
     location.href = HOME;
+  }
+
+  navigateCart() {
+    console.log("네비게이트 this", this);
+    const appPage = document.getElementById("app");
+    appPage.innerHTML = "";
+
+    new CartView(qs("#app"));
   }
 }
 
