@@ -19,13 +19,15 @@ export default class CartView extends View {
     this.addEvent("click", ".fa-house", this.navigateHome.bind(this));
   }
 
-  handleAllCheckbox() {
+  handleAllCheckbox(event) {
     const checkboxes = qsAll(".item_checkbox");
+    console.log("체크박스:", checkboxes);
     checkboxes.forEach((checkbox) => (checkbox.checked = event.target.checked));
   }
 
   navigateHome() {
     /**@todo 중복 함수라 제거 후 props로 내려받아서 공용사용? */
+    history.pushState({ page: "home" }, null, HOME);
     location.href = HOME;
   }
 
@@ -69,30 +71,25 @@ export default class CartView extends View {
   template() {
     /**@todo 헤더가 headerView랑 겹치는데 방법이 없을까 */
     return `
-    <header class="header">
-      <i class="fa-solid fa-house fa-2x"></i>
-      <h2>정안이의 쇼핑몰 장바구니</h2>
-      <i class="fa-solid fa-bars fa-2x"></i>
-      </header>
       <div class="cart_page_wrapper">
-      <div class="cart_table_wrapper">
-      <table class="cart_table">
-        <thead>
-          <tr>
-          <th>체크</th>
-            <th>이미지</th>
-            <th>상품명</th>
-            <th>카테고리</th>
-            <th>가격</th>
-            <th>비고</th>
-          </tr>
-        </thead>
-        <tbody>
-        <td><input type="checkbox" id="all_checkbox" class="item_checkbox"></td>
-          ${this.getCartItemTemplate()}
-        </tbody>
-      </table>
-      </div>
+        <div class="cart_table_wrapper">
+          <table class="cart_table">
+            <thead>
+              <tr>
+               <th>체크</th>
+               <th>이미지</th>
+               <th>상품명</th>
+               <th>카테고리</th>
+               <th>가격</th>
+               <th>비고</th>
+              </tr>
+            </thead>
+            <tbody>
+             <td><input type="checkbox" id="all_checkbox"></td>
+             ${this.getCartItemTemplate()}
+            </tbody>
+          </table>
+        </div>
       <div class="purchase_modal"></div>
       ${this.getButtonTemplate()}
       </div>
