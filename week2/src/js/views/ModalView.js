@@ -3,6 +3,7 @@ import { qs } from "../utils/domHelper";
 import View from "./View";
 export default class ModalView extends View {
   setUp() {
+    console.log("모달 뷰 내 props", this.props);
     this.selectedProducts = this.props;
     this.selectedProductsList = Object.keys(this.selectedProducts).map(
       (key) => this.selectedProducts[key]
@@ -25,7 +26,21 @@ export default class ModalView extends View {
 
   handleClickPurchaseBtn() {
     alert(MESSAGES.COMPLETE_PURCHASE);
+    this.deleteCart();
     this.closeModal();
+  }
+
+  deleteCart() {
+    const localStorageCartList =
+      JSON.parse(localStorage.getItem("cartList")) || [];
+
+    const updatedCartList = localStorageCartList.filter((selectedItem) => {
+      return !this.selectedProductsList.some(
+        (cartItem) => cartItem.id === selectedItem.id
+      );
+    });
+
+    localStorage.setItem("cartList", JSON.stringify(updatedCartList));
   }
 
   closeModal() {
@@ -36,26 +51,24 @@ export default class ModalView extends View {
     console.log("template 내 this", this.selectedProducts);
     return `
       <dialog class="product_list_modal">
-        <div class="modal_content">
+        <section class="modal_content">
             ${this.getSelectedProductTemplate()}
-        </div>
+        </section>
         <div class="total_amount">총합 금액:${this.totalAmount()} </div>
-        <div class="modal_btn_wrapper">
-        <button class="modal_purchase_btn">구매하기</button>
+        <section class="modal_btn_wrapper">
+        <button class="modal_purchase_btn">최종 구매하기</button>
         <button class="close_btn">Close</button>
-        </div>
+        </section>
       </dialog>
     `;
   }
 
   getSelectedProductTemplate() {
-    console.log("getSelectedProductTemplate 내 this", this.selectedProducts);
-
     return this.selectedProductsList
       .map(
         (item) =>
           `
-              <div class="product_info">
+              <div id=${item.id} class="product_info">
                 <img class="modal_product_img" 
                      src="${item.imageUrl}" 
                      alt="${item.name}">
