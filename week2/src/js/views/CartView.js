@@ -13,9 +13,10 @@ export default class CartView extends View {
 
   setEvent() {
     this.addEvent("click", ".delete_btn", this.deleteCart.bind(this));
-    this.addEvent("click", ".purchase_btn", this.openModal.bind(this));
-    this.addEvent("click", ".navigate_home_btn", this.navigateHome);
-    this.addEvent("click", "#all_checkbox", this.handleAllCheckbox);
+    this.addEvent("click", ".cart_purchase_btn", this.openModal.bind(this));
+    this.addEvent("click", ".navigate_home_btn", this.navigateHome.bind(this));
+    this.addEvent("click", "#all_checkbox", this.handleAllCheckbox.bind(this));
+    this.addEvent("click", ".fa-house", this.navigateHome.bind(this));
   }
 
   handleAllCheckbox() {
@@ -54,7 +55,6 @@ export default class CartView extends View {
   }
 
   deleteCart(event) {
-    console.log("deleteCart 내 this.cartList1", this.cartList);
     const targetProduct = event.target.closest(".detail_item");
     const targetProductId = targetProduct.id;
     this.cartList = this.cartList.filter(
@@ -67,8 +67,13 @@ export default class CartView extends View {
   }
 
   template() {
+    /**@todo 헤더가 headerView랑 겹치는데 방법이 없을까 */
     return `
-      <h2 class="product_list_title">장바구니</h2>
+    <header class="header">
+      <i class="fa-solid fa-house fa-2x"></i>
+      <h2>정안이의 쇼핑몰 장바구니</h2>
+      <i class="fa-solid fa-bars fa-2x"></i>
+      </header>
       <div class="cart_page_wrapper">
       <div class="cart_table_wrapper">
       <table class="cart_table">
@@ -95,7 +100,6 @@ export default class CartView extends View {
   }
 
   getCartItemTemplate() {
-    /**@todo 로컬스토리지 값을 상태로 변경해서 props 내려주기  근데 여기서 this.cartList는 왜 Undefined임?*/
     const cartList = localStorage.getItem("cartList");
     const parseCartList = JSON.parse(cartList);
     console.log(parseCartList);
@@ -121,7 +125,7 @@ export default class CartView extends View {
   getButtonTemplate() {
     return `
       <div class="btn_wrapper">
-        <button class="purchase_btn" type="button">구매하기</button>
+        <button class="cart_purchase_btn" type="button">구매하기</button>
         <button class="navigate_home_btn" type="button">홈으로 이동</button>
       </div>
     `;
