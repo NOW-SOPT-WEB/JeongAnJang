@@ -21,7 +21,6 @@ export default class MainSectionView extends View {
       const selectedProduct = storage.productData.find(
         (item) => item.id.toString() === targetProductId
       );
-      console.log(targetProductId);
       if (selectedProduct) {
         cartList.push(selectedProduct);
         localStorage.setItem("cartList", JSON.stringify(cartList));

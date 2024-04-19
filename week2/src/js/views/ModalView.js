@@ -3,9 +3,7 @@ import { qs } from "../utils/domHelper";
 import View from "./View";
 export default class ModalView extends View {
   setUp() {
-    console.log("모달 뷰 내 props", this.props);
-    this.selectedProducts = this.props;
-    this.selectedProductsList = Object.keys(this.selectedProducts).map(
+    this.selectedProductsList = Object.keys(this.props.selectedProducts).map(
       (key) => this.selectedProducts[key]
     );
   }
@@ -48,7 +46,6 @@ export default class ModalView extends View {
   }
 
   template() {
-    console.log("template 내 this", this.selectedProducts);
     return `
       <dialog class="product_list_modal">
         <section class="modal_content">

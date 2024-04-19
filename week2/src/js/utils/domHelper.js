@@ -9,7 +9,3 @@ export function qsAll(selector, scope = document) {
 
   return scope.querySelectorAll(selector);
 }
-
-export function on(target, eventName, handler) {
-  target.addEventListener(eventName, handler);
-}

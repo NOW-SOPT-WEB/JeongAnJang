@@ -7,7 +7,6 @@ export default class HeaderView extends View {
   setUp() {
     this.navigateHome = this.props.navigateHome;
     this.navigateCart = this.props.navigateCart;
-    this.cartList = this.props.cartList;
   }
 
   setEvent() {
