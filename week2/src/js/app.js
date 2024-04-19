@@ -44,6 +44,7 @@ export default class App extends View {
     });
     new MainSectionView(qs(".main"), {
       navigateCart: navigateCart.bind(this),
+      renderFilterdProducts: renderFilterdProducts.bind(this),
     });
   }
 
@@ -85,13 +86,14 @@ export default class App extends View {
           `
       <div class="product_card">
         <img
+        id=${items.id}
         class="product_card_img"
         src="${items.imageUrl}"
         alt="${items.name}"
         />
         <i class="fa-solid fa-heart"></i>
         <p>${items.name}</p>
-        <p>${items.price}</p>
+        <p>${items.price.toLocaleString()}</p>
     </div>
           `
       )
