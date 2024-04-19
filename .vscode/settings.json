@@ -1,0 +1,34 @@
+{
+  "postcssSorting.config": {
+    "order": [
+      "custom-properties",
+      "dollar-variables",
+      "declarations",
+      "at-rules",
+      "rules"
+    ],
+    "properties-order": [
+      "display",
+      "list-style",
+      "position",
+      "float",
+      "clear",
+      "top",
+      "right",
+      "bottom",
+      "left",
+      "width",
+      "height",
+      "padding",
+      "margin",
+      "border",
+      "background",
+      "color",
+      "font",
+      "text-decoration",
+      "text-align",
+      "vertical-align",
+      "white-space"
+    ]
+  }
+}
