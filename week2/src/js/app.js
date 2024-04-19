@@ -109,9 +109,7 @@ export default class App extends View {
   }
 
   navigateCart() {
-    const appPage = document.getElementById("app");
-    appPage.innerHTML = "";
-
+    qs("#app").innerHTML = "";
     new CartView(qs("#app"));
   }
 }
