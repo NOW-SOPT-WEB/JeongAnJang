@@ -109,8 +109,12 @@ export default class App extends View {
   }
 
   navigateCart() {
+    const {
+      state: { cartList },
+      navigateHome,
+    } = this;
     qs("#app").innerHTML = "";
-    new CartView(qs("#app"));
+    new CartView(qs("#app"), { cartList, navigateHome });
   }
 }
 

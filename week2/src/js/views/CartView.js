@@ -11,12 +11,15 @@ export default class CartView extends View {
     console.log("카트 뷰 내 props", props);
   }
 
+  setUp() {
+    this.navigateHome = this.props.navigateHome;
+  }
+
   setEvent() {
     this.addEvent("click", ".delete_btn", this.deleteCart.bind(this));
     this.addEvent("click", ".cart_purchase_btn", this.openModal.bind(this));
-    this.addEvent("click", ".navigate_home_btn", this.navigateHome.bind(this));
+    this.addEvent("click", ".navigate_home_btn", this.navigateHome);
     this.addEvent("click", "#all_checkbox", this.handleAllCheckbox.bind(this));
-    this.addEvent("click", ".fa-house", this.navigateHome.bind(this));
     this.addEvent(
       "click",
       ".all_delete_btn",
@@ -28,12 +31,6 @@ export default class CartView extends View {
     const checkboxes = qsAll(".item_checkbox");
     console.log("체크박스:", checkboxes);
     checkboxes.forEach((checkbox) => (checkbox.checked = event.target.checked));
-  }
-
-  navigateHome() {
-    /**@todo 중복 함수라 제거 후 props로 내려받아서 공용사용? */
-    history.pushState({ page: "home" }, null, HOME);
-    location.href = HOME;
   }
 
   getSelectedProducts() {
