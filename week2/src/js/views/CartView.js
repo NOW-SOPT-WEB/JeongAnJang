@@ -54,7 +54,7 @@ export default class CartView extends View {
 
   openModal() {
     const selectedProducts = this.getSelectedProducts();
-    new ModalView(qs(".purchase_modal"), selectedProducts);
+    new ModalView(qs(".purchase_modal"), { selectedProducts });
     qs(".product_list_modal").showModal();
   }
 

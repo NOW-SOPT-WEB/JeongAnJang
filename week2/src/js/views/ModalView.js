@@ -4,7 +4,7 @@ import View from "./View";
 export default class ModalView extends View {
   setUp() {
     this.selectedProductsList = Object.keys(this.props.selectedProducts).map(
-      (key) => this.selectedProducts[key]
+      (key) => this.props.selectedProducts[key]
     );
   }
 
