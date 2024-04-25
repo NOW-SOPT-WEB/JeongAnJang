@@ -8,7 +8,7 @@ export const HeaderWrapper = styled.header`
 `;
 
 export const HeaderTitle = styled.h1`
-  ${({ theme }) => theme.fonts.heading};
+  ${({ theme }) => theme.fonts.title};
 `;
 
 export const GameState = styled.div`

@@ -11,7 +11,7 @@ const colors = {
 };
 
 const fonts = {
-  Title: css`
+  title: css`
     font-family: "SUIT";
     font-size: 2.4rem;
     font-style: normal;
