@@ -6,6 +6,8 @@ export default class ModalView extends View {
     this.selectedProductsList = Object.keys(this.props.selectedProducts).map(
       (key) => this.props.selectedProducts[key]
     );
+
+    console.log("this.selectedProductsList", this.selectedProductsList);
   }
 
   navigateHome() {
@@ -80,10 +82,8 @@ export default class ModalView extends View {
   }
 
   totalAmount() {
-    let sum = 0;
-    this.selectedProductsList.forEach((item) => {
-      sum += item.price;
-    });
-    return sum.toLocaleString();
+    return this.selectedProductsList
+      .reduce((acc, cur) => acc + cur.price, 0)
+      .toLocaleString();
   }
 }
