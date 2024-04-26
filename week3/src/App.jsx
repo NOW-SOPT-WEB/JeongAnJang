@@ -1,11 +1,11 @@
 import Header from "./components/header/Header";
 
-function App() {
+const App = () => {
   return (
     <>
       <Header />
     </>
   );
-}
+};
 
 export default App;
