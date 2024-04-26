@@ -61,9 +61,7 @@ export default class CartView extends View {
   deleteCart(event) {
     const targetProduct = event.target.closest(".detail_item");
     const targetProductId = targetProduct.id;
-    this.cartList = this.cartList.filter(
-      (item) => item.id.toString() !== targetProductId
-    );
+    this.removeProduct(targetProductId);
 
     localStorage.setItem("cartList", JSON.stringify(this.cartList));
     this.render();
@@ -74,13 +72,17 @@ export default class CartView extends View {
     checkboxes.forEach((checkbox) => {
       if (checkbox.checked) {
         const productId = checkbox.closest(".detail_item").id;
-        this.cartList = this.cartList.filter(
-          (item) => item.id.toString() !== productId
-        );
+        this.removeProduct(productId);
       }
     });
     localStorage.setItem("cartList", JSON.stringify(this.cartList));
     this.render();
+  }
+
+  removeProduct(productId) {
+    this.cartList = this.cartList.filter(
+      (item) => item.id.toString() !== productId
+    );
   }
 
   template() {
