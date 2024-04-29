@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import cover from "../../assets/cover.png";
 const Card = (props) => {
-  const { card, handleChoice, flipped, disabled } = props;
+  const { card, handleChoice, flipped } = props;
 
   const handleClick = () => {
     if (!flipped) {
@@ -11,7 +11,7 @@ const Card = (props) => {
 
   return (
     <CardContainer className="card">
-      <div className={flipped ? "flipped" : ""}>
+      <div>
         <FrontImage src={card.src} alt="card front" flipped={flipped} />
         <BackImage
           src={cover}
