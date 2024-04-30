@@ -43,17 +43,18 @@ export const compareCards = (
   resetCardValue
 ) => {
   const isMatch = choices[0]?.name === choices[1]?.name;
-  if (choices[0] && choices[1]) {
-    if (isMatch) {
-      setCards((prevCards) =>
-        prevCards.map((card) =>
-          card.name === choices[0].name ? { ...card, status: true } : card
-        )
-      );
-      setTurns((prevTurns) => prevTurns + 1);
-      resetCardValue();
-    } else {
-      setTimeout(resetCardValue, 1000);
-    }
+  const updatedCards = cards.map((card) => {
+    card?.name === choices[0]?.name ? { ...card, status: isMatch } : card;
+  });
+
+  if (!choices[0] || !choices[1]) return;
+
+  if (isMatch) {
+    setTurns((prevTurns) => prevTurns + 1);
+    setCards(updatedCards);
+  } else {
+    setTimeout(resetCardValue, 1000);
   }
+
+  console.log(cards);
 };

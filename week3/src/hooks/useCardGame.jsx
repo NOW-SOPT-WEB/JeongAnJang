@@ -52,7 +52,8 @@ const useCardGame = () => {
   }, []);
 
   useEffect(() => {
-    compareCards(choices, cards, setCards, setTurns, resetCardValue);
+    if (cards.length > 0)
+      compareCards(choices, cards, setCards, setTurns, resetCardValue);
   }, [choices]);
 
   return {
