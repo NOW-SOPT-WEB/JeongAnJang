@@ -5,3 +5,9 @@ export const NUMBER = Object.freeze({
   NORMAL_LEVEL: 7,
   HARD_LEVEL: 9,
 });
+
+export const LEVEL = Object.freeze({
+  EASY: "Easy",
+  NORMAL: "Normal",
+  HARD: "Hard",
+});

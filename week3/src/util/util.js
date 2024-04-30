@@ -1,4 +1,4 @@
-import { NUMBER } from "../constants/constants";
+import { LEVEL, NUMBER } from "../constants/constants";
 import { CARD_DATA } from "../constants/data";
 
 export const shuffleCards = (array) => {
@@ -10,15 +10,15 @@ export const shuffleCards = (array) => {
 export const generateCardsByLevel = (level, setCompleted) => {
   let totalPairs;
   switch (level) {
-    case "Easy":
+    case LEVEL.EASY:
       totalPairs = NUMBER.EASY_LEVEL;
       setCompleted(NUMBER.EASY_LEVEL);
       break;
-    case "Normal":
+    case LEVEL.NORMAL:
       totalPairs = NUMBER.NORMAL_LEVEL;
       setCompleted(NUMBER.NORMAL_LEVEL);
       break;
-    case "Hard":
+    case LEVEL.HARD:
       totalPairs = NUMBER.HARD_LEVEL;
       setCompleted(NUMBER.HARD_LEVEL);
       break;
@@ -41,7 +41,6 @@ export const compareCards = (
   resetCardValue
 ) => {
   const isMatch = choices[0]?.name === choices[1]?.name;
-  console.log("compareCards 내 cards", cards);
   if (choices[0] && choices[1]) {
     if (isMatch) {
       setCards((prevCards) =>
