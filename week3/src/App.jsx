@@ -117,7 +117,9 @@ const App = () => {
           />
         ))}
       </CardWrapper>
-      {finished && <CardGameModal />}
+      {finished && (
+        <CardGameModal resetGame={resetGame} setFinished={setFinished} />
+      )}
     </>
   );
 };

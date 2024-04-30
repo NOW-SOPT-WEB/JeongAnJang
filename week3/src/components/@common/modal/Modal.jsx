@@ -8,8 +8,8 @@ const Content = ({ children }) => {
   return <S.Content>{children}</S.Content>;
 };
 
-const Close = ({ children }) => {
-  return <S.Close>{children}</S.Close>;
+const Close = ({ children, onClick }) => {
+  return <S.Close onClick={onClick}>{children}</S.Close>;
 };
 
 const BackDrop = ({ children }) => {
