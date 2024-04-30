@@ -44,7 +44,7 @@ export const compareCards = (
 ) => {
   const isMatch = choices[0]?.name === choices[1]?.name;
   const updatedCards = cards.map((card) => {
-    card?.name === choices[0]?.name ? { ...card, status: isMatch } : card;
+    card.name === choices[0]?.name ? { ...card, status: isMatch } : card;
   });
 
   if (!choices[0] || !choices[1]) return;
@@ -55,6 +55,4 @@ export const compareCards = (
   } else {
     setTimeout(resetCardValue, 1000);
   }
-
-  console.log(cards);
 };
