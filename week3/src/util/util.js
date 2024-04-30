@@ -1,10 +1,12 @@
 import { LEVEL, NUMBER } from "../constants/constants";
 import { CARD_DATA } from "../constants/data";
 
+const randomShuffle = (array) => {
+  return array.sort(() => Math.random() - NUMBER.SHUFFLE_HELP_NUM);
+};
+
 export const shuffleCards = (array) => {
-  return array
-    .sort(() => Math.random() - NUMBER.SHUFFLE_HELP_NUM)
-    .map((card) => ({ ...card, id: Math.random() }));
+  return randomShuffle(array).map((card) => ({ ...card, id: Math.random() }));
 };
 
 export const generateCardsByLevel = (level, setCompleted) => {
@@ -27,9 +29,7 @@ export const generateCardsByLevel = (level, setCompleted) => {
       break;
   }
 
-  const cardPairs = CARD_DATA.sort(
-    () => Math.random() - NUMBER.SHUFFLE_HELP_NUM
-  ).slice(0, totalPairs);
+  const cardPairs = randomShuffle(CARD_DATA).slice(0, totalPairs);
   const cards = [...cardPairs, ...cardPairs];
 
   return shuffleCards(cards);
