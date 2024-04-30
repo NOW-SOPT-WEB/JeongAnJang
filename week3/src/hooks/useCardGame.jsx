@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { compareCards, generateCardsByLevel } from "../util/util";
-import { NUMBER } from "../constants/constants";
+import { LEVEL, NUMBER } from "../constants/constants";
 
 const useCardGame = () => {
   const [cards, setCards] = useState([]);
@@ -13,16 +13,19 @@ const useCardGame = () => {
     if (turns === completed - 1) setFinished(true);
   };
 
-  const handleLevelBtnClick = (level) => {
+  const handleLevelBtnClick = useCallback((level) => {
     shuffledCards(level);
-  };
+  }, []);
 
-  const shuffledCards = (level) => {
-    const cards = generateCardsByLevel(level, setCompleted);
-    setChoices([null, null]);
-    setCards(cards);
-    setTurns(NUMBER.ZERO);
-  };
+  const shuffledCards = useCallback(
+    (level) => {
+      const cards = generateCardsByLevel(level, setCompleted);
+      setChoices([null, null]);
+      setCards(cards);
+      setTurns(NUMBER.ZERO);
+    },
+    [setCompleted]
+  );
 
   const handleChoice = (card) => {
     if (choices.every((choice) => choice === null)) {
@@ -38,15 +41,14 @@ const useCardGame = () => {
   };
 
   const resetGame = () => {
-    console.log("리셋게임 버튼 클릭");
     setChoices([null, null]);
     setTurns(NUMBER.ZERO);
     setCompleted(NUMBER.EASY_LEVEL);
-    shuffledCards("Easy");
+    shuffledCards(LEVEL.EASY);
   };
 
   useEffect(() => {
-    shuffledCards("Easy");
+    shuffledCards(LEVEL.EASY);
   }, []);
 
   useEffect(() => {
