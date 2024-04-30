@@ -12,12 +12,12 @@ const Card = (props) => {
   return (
     <CardContainer className="card">
       <div>
-        <FrontImage src={card.src} alt="card front" flipped={flipped} />
+        <FrontImage src={card.src} alt="card front" $flipped={flipped} />
         <BackImage
           src={cover}
           onClick={handleClick}
           alt="card back"
-          flipped={flipped}
+          $flipped={flipped}
         />
       </div>
     </CardContainer>
@@ -43,8 +43,8 @@ const FrontImage = styled(CardImage)`
   position: absolute;
   cursor: pointer;
 
-  ${({ flipped }) =>
-    flipped &&
+  ${({ $flipped }) =>
+    $flipped &&
     `
     transform: rotateX(0deg);
     transition-delay: 0.2s;
@@ -56,8 +56,8 @@ const BackImage = styled(CardImage)`
   transition-delay: 0.2s;
   cursor: pointer;
 
-  ${({ flipped }) =>
-    flipped &&
+  ${({ $flipped }) =>
+    $flipped &&
     `
     transform: rotateY(90deg); 
     transition-delay: 0s;
