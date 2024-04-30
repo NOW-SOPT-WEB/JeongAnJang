@@ -12,15 +12,13 @@ const Card = (props) => {
 
   return (
     <S.CardContainer className="card">
-      <div>
-        <S.FrontImage src={card.src} alt="card front" $flipped={flipped} />
-        <S.BackImage
-          src={cover}
-          onClick={handleClick}
-          alt="card back"
-          $flipped={flipped}
-        />
-      </div>
+      <S.FrontImage src={card.src} alt="card front" $flipped={flipped} />
+      <S.BackImage
+        src={cover}
+        onClick={handleClick}
+        alt="card back"
+        $flipped={flipped}
+      />
     </S.CardContainer>
   );
 };
