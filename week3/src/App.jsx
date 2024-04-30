@@ -6,32 +6,32 @@ import { CARD_DATA } from "./constants/data";
 import styled from "styled-components";
 import { NUMBER } from "./constants/constants";
 import { shuffleCards } from "./util/util";
+import CardGameModal from "./components/cardGame/CardGameModal";
 
 const App = () => {
   const [cards, setCards] = useState([]);
   const [turns, setTurns] = useState(0);
   const [choices, setChoices] = useState([null, null]);
-  // const [disabled, setDisabled] = useState(false);
   const [completed, setCompleted] = useState(NUMBER.EASY_LEVEL);
   const [finished, setFinished] = useState(false);
 
   const gameFinished = () => {
-    setFinished(true);
+    if (turns === completed - 1) setFinished(true);
   };
 
   const generateCardsByLevel = (level) => {
     let totalPairs;
     switch (level) {
       case "Easy":
-        totalPairs = NUMBER.EASY_LEVEL; //5
+        totalPairs = NUMBER.EASY_LEVEL;
         setCompleted(NUMBER.EASY_LEVEL);
         break;
       case "Normal":
-        totalPairs = NUMBER.NORMAL_LEVEL; //7
+        totalPairs = NUMBER.NORMAL_LEVEL;
         setCompleted(NUMBER.NORMAL_LEVEL);
         break;
       case "Hard":
-        totalPairs = NUMBER.HARD_LEVEL; //9
+        totalPairs = NUMBER.HARD_LEVEL;
         setCompleted(NUMBER.HARD_LEVEL);
         break;
       default:
@@ -39,10 +39,8 @@ const App = () => {
         break;
     }
 
-    const cardPairs = CARD_DATA.slice(0, totalPairs); //5
-    const cards = [...cardPairs, ...cardPairs]; // 10
-    console.log("cardPairs", cardPairs);
-    console.log("generateCardsByLevel 내 cards", cards);
+    const cardPairs = CARD_DATA.slice(0, totalPairs);
+    const cards = [...cardPairs, ...cardPairs];
 
     return shuffleCards(cards);
   };
@@ -68,7 +66,6 @@ const App = () => {
 
   const compareCards = () => {
     const isMatch = choices[0]?.name === choices[1]?.name;
-    // setDisabled(true);
     console.log("compareCards 내 cards", cards);
     if (choices[0] && choices[1]) {
       if (isMatch) {
@@ -86,9 +83,8 @@ const App = () => {
   };
 
   const resetCardValue = () => {
-    console.log("resetCardValue 실행!");
     setChoices([null, null]);
-    // setTimeout(() => setDisabled(false), 1000);
+    gameFinished();
   };
 
   const resetGame = () => {
@@ -96,11 +92,11 @@ const App = () => {
     setChoices([null, null]);
     setTurns(NUMBER.ZERO);
     setCompleted(5);
+    shuffledCards("Easy");
   };
 
   useEffect(() => {
     shuffledCards("Easy");
-    console.log("useEffect 내 cards", cards);
   }, []);
 
   useEffect(() => {
@@ -121,8 +117,7 @@ const App = () => {
           />
         ))}
       </CardWrapper>
-      {/* {finished && 
-      <Modal></Modal>} */}
+      {finished && <CardGameModal />}
     </>
   );
 };
