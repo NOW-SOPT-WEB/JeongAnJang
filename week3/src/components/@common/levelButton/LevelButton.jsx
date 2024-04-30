@@ -1,13 +1,12 @@
+import { LEVEL } from "../../../constants/constants";
 import * as S from "./LevelButton.style";
 const LevelButton = (props) => {
   const { handleLevelBtnClick } = props;
 
-  const buttonTitle = ["Easy", "Normal", "Hard"];
-
   return (
     <>
       <S.LevelButtonWrapper>
-        {buttonTitle.map((title, index) => (
+        {Object.values(LEVEL).map((title, index) => (
           <S.Button
             key={index}
             type="button"
