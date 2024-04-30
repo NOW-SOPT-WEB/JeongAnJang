@@ -27,7 +27,9 @@ export const generateCardsByLevel = (level, setCompleted) => {
       break;
   }
 
-  const cardPairs = CARD_DATA.slice(0, totalPairs);
+  const cardPairs = CARD_DATA.sort(
+    () => Math.random() - NUMBER.SHUFFLE_HELP_NUM
+  ).slice(0, totalPairs);
   const cards = [...cardPairs, ...cardPairs];
 
   return shuffleCards(cards);
