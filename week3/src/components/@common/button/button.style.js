@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.button`
+export const ButtonWrapper = styled.button`
   ${({ theme: { mixin } }) =>
     mixin.inlineFlexBox({ align: "center", justify: "center" })}
   ${({ theme: { fonts } }) => fonts.body}

@@ -2,7 +2,7 @@ import * as S from "./button.style";
 
 const Button = ({ children, onClick }) => {
   return (
-    <S.Wrapper
+    <S.ButtonWrapper
       style={{
         backgroundColor: "#FF2176",
         color: "#fff",
@@ -10,7 +10,7 @@ const Button = ({ children, onClick }) => {
       onClick={onClick}
     >
       {children}
-    </S.Wrapper>
+    </S.ButtonWrapper>
   );
 };
 
