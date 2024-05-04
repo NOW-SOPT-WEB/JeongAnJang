@@ -48,8 +48,6 @@ export const compareCards = (
     return card.name === choices[0]?.name ? { ...card, status: isMatch } : card;
   });
 
-  console.log("updatedCards", updatedCards);
-
   if (!choices[0] || !choices[1]) return;
 
   if (isMatch) {

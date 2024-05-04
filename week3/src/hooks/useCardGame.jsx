@@ -55,8 +55,6 @@ const useCardGame = () => {
         resetCardValue,
         setChoices
       );
-      console.log("turns", turns);
-      console.log("completed", completed);
     }
   }, [choices]);
 
