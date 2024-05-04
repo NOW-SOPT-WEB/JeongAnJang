@@ -12,8 +12,6 @@ const App = () => {
     resetGame,
     turns,
     completed,
-    finished,
-    setFinished,
     cards,
     choices,
   } = useCardGame();
@@ -32,9 +30,7 @@ const App = () => {
           />
         ))}
       </CardWrapper>
-      {finished && (
-        <CardGameModal resetGame={resetGame} setFinished={setFinished} />
-      )}
+      {turns === completed && <CardGameModal resetGame={resetGame} />}
     </>
   );
 };

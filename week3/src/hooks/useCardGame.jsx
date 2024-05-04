@@ -7,11 +7,6 @@ const useCardGame = () => {
   const [turns, setTurns] = useState(NUMBER.ZERO);
   const [choices, setChoices] = useState([null, null]);
   const [completed, setCompleted] = useState(NUMBER.EASY_LEVEL);
-  const [finished, setFinished] = useState(false);
-
-  const gameFinished = () => {
-    if (turns === completed - 1) setFinished(true);
-  };
 
   const handleLevelBtnClick = useCallback((level) => {
     shuffledCards(level);
@@ -37,7 +32,6 @@ const useCardGame = () => {
 
   const resetCardValue = () => {
     setChoices([null, null]);
-    gameFinished();
   };
 
   const resetGame = () => {
@@ -52,12 +46,21 @@ const useCardGame = () => {
   }, []);
 
   useEffect(() => {
-    if (cards.length > 0)
-      compareCards(choices, cards, setCards, setTurns, resetCardValue);
+    if (cards.length > 0) {
+      compareCards(
+        choices,
+        cards,
+        setCards,
+        setTurns,
+        resetCardValue,
+        setChoices
+      );
+      console.log("turns", turns);
+      console.log("completed", completed);
+    }
   }, [choices]);
 
   return {
-    gameFinished,
     handleLevelBtnClick,
     shuffledCards,
     handleChoice,
@@ -65,8 +68,6 @@ const useCardGame = () => {
     resetGame,
     turns,
     completed,
-    finished,
-    setFinished,
     cards,
     choices,
   };

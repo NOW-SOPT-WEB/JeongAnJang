@@ -1,10 +1,9 @@
 import Modal from "../@common/modal/Modal";
 
 const CardGameModal = (props) => {
-  const { resetGame, setFinished } = props;
+  const { resetGame } = props;
 
   const handleClose = () => {
-    setFinished(false);
     resetGame();
   };
 

@@ -40,18 +40,22 @@ export const compareCards = (
   cards,
   setCards,
   setTurns,
-  resetCardValue
+  resetCardValue,
+  setChoices
 ) => {
   const isMatch = choices[0]?.name === choices[1]?.name;
   const updatedCards = cards.map((card) => {
-    card.name === choices[0]?.name ? { ...card, status: isMatch } : card;
+    return card.name === choices[0]?.name ? { ...card, status: isMatch } : card;
   });
+
+  console.log("updatedCards", updatedCards);
 
   if (!choices[0] || !choices[1]) return;
 
   if (isMatch) {
     setTurns((prevTurns) => prevTurns + 1);
     setCards(updatedCards);
+    setChoices([null, null]);
   } else {
     setTimeout(resetCardValue, 1000);
   }
