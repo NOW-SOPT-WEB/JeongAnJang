@@ -9,20 +9,17 @@ export const shuffleCards = (array) => {
   return randomShuffle(array).map((card) => ({ ...card, id: Math.random() }));
 };
 
-export const generateCardsByLevel = (level, setCompleted) => {
+export const generateCardsByLevel = (level) => {
   let totalPairs;
   switch (level) {
     case LEVEL.EASY:
       totalPairs = NUMBER.EASY_LEVEL;
-      setCompleted(NUMBER.EASY_LEVEL);
       break;
     case LEVEL.NORMAL:
       totalPairs = NUMBER.NORMAL_LEVEL;
-      setCompleted(NUMBER.NORMAL_LEVEL);
       break;
     case LEVEL.HARD:
       totalPairs = NUMBER.HARD_LEVEL;
-      setCompleted(NUMBER.HARD_LEVEL);
       break;
     default:
       totalPairs = NUMBER.EASY_LEVEL;

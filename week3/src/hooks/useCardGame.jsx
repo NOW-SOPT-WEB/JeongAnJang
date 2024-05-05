@@ -14,13 +14,27 @@ const useCardGame = () => {
 
   const shuffledCards = useCallback(
     (level) => {
-      const cards = generateCardsByLevel(level, setCompleted);
+      const cards = generateCardsByLevel(level);
+      selectCompleteLevel(level);
       setChoices([null, null]);
       setCards(cards);
       setTurns(NUMBER.ZERO);
     },
     [setCompleted]
   );
+
+  const selectCompleteLevel = (level) => {
+    switch (level) {
+      case LEVEL.EASY:
+        return setCompleted(NUMBER.EASY_LEVEL);
+      case LEVEL.NORMAL:
+        return setCompleted(NUMBER.NORMAL_LEVEL);
+      case LEVEL.HARD:
+        return setCompleted(NUMBER.HARD_LEVEL);
+      default:
+        return setCompleted(NUMBER.EASY_LEVEL);
+    }
+  };
 
   const handleChoice = (card) => {
     if (choices.every((choice) => choice === null)) {
