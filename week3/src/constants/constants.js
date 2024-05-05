@@ -11,3 +11,7 @@ export const LEVEL = Object.freeze({
   NORMAL: "Normal",
   HARD: "Hard",
 });
+
+export const TIME = Object.freeze({
+  CANT_CHOICE: 1000,
+});

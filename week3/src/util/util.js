@@ -1,4 +1,4 @@
-import { LEVEL, NUMBER } from "../constants/constants";
+import { LEVEL, NUMBER, TIME } from "../constants/constants";
 import { CARD_DATA } from "../constants/data";
 
 const randomShuffle = (array) => {
@@ -40,8 +40,7 @@ export const compareCards = (
   cards,
   setCards,
   setTurns,
-  resetCardValue,
-  setChoices
+  resetCardValue
 ) => {
   const isMatch = choices[0]?.name === choices[1]?.name;
   const updatedCards = cards.map((card) => {
@@ -53,8 +52,8 @@ export const compareCards = (
   if (isMatch) {
     setTurns((prevTurns) => prevTurns + 1);
     setCards(updatedCards);
-    setChoices([null, null]);
+    resetCardValue();
   } else {
-    setTimeout(resetCardValue, 1000);
+    setTimeout(resetCardValue, TIME.CANT_CHOICE);
   }
 };
