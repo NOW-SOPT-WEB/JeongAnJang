@@ -11,14 +11,18 @@ const App = () => {
     handleChoice,
     resetGame,
     turns,
-    completed,
+    requiredMatch,
     cards,
     choices,
   } = useCardGame();
 
   return (
     <>
-      <Header resetGame={resetGame} turns={turns} completed={completed} />
+      <Header
+        resetGame={resetGame}
+        turns={turns}
+        requiredMatch={requiredMatch}
+      />
       <LevelButton handleLevelBtnClick={handleLevelBtnClick} />
       <CardWrapper>
         {cards.map((card) => (
@@ -30,7 +34,7 @@ const App = () => {
           />
         ))}
       </CardWrapper>
-      {turns === completed && <CardGameModal resetGame={resetGame} />}
+      {turns === requiredMatch && <CardGameModal resetGame={resetGame} />}
     </>
   );
 };

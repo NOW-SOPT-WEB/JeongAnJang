@@ -6,33 +6,42 @@ const useCardGame = () => {
   const [cards, setCards] = useState([]);
   const [turns, setTurns] = useState(NUMBER.ZERO);
   const [choices, setChoices] = useState([null, null]);
-  const [completed, setCompleted] = useState(NUMBER.EASY_LEVEL);
+  const [requiredMatch, setRequiredMatch] = useState(NUMBER.EASY_LEVEL);
 
   const handleLevelBtnClick = useCallback((level) => {
     shuffledCards(level);
   }, []);
 
+  const generateCards = (level) => {
+    const cards = generateCardsByLevel(level);
+    return cards;
+  };
+
   const shuffledCards = useCallback(
     (level) => {
-      const cards = generateCardsByLevel(level);
-      selectCompleteLevel(level);
-      setChoices([null, null]);
+      const cards = generateCards(level);
       setCards(cards);
+      selectRequiredMatch(level);
+      resetCardValue();
       setTurns(NUMBER.ZERO);
     },
-    [setCompleted]
+    [setRequiredMatch]
   );
 
-  const selectCompleteLevel = (level) => {
+  const selectRequiredMatch = (level) => {
     switch (level) {
       case LEVEL.EASY:
-        return setCompleted(NUMBER.EASY_LEVEL);
+        setRequiredMatch(NUMBER.EASY_LEVEL);
+        break;
       case LEVEL.NORMAL:
-        return setCompleted(NUMBER.NORMAL_LEVEL);
+        setRequiredMatch(NUMBER.NORMAL_LEVEL);
+        break;
       case LEVEL.HARD:
-        return setCompleted(NUMBER.HARD_LEVEL);
+        setRequiredMatch(NUMBER.HARD_LEVEL);
+        break;
       default:
-        return setCompleted(NUMBER.EASY_LEVEL);
+        setRequiredMatch(NUMBER.EASY_LEVEL);
+        break;
     }
   };
 
@@ -49,9 +58,9 @@ const useCardGame = () => {
   };
 
   const resetGame = () => {
-    setChoices([null, null]);
+    resetCardValue();
     setTurns(NUMBER.ZERO);
-    setCompleted(NUMBER.EASY_LEVEL);
+    setRequiredMatch(NUMBER.EASY_LEVEL);
     shuffledCards(LEVEL.EASY);
   };
 
@@ -72,7 +81,7 @@ const useCardGame = () => {
     resetCardValue,
     resetGame,
     turns,
-    completed,
+    requiredMatch,
     cards,
     choices,
   };
