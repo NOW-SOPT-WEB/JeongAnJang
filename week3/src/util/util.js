@@ -6,7 +6,10 @@ const randomShuffle = (array) => {
 };
 
 export const shuffleCards = (array) => {
-  return randomShuffle(array).map((card) => ({ ...card, id: Math.random() }));
+  return randomShuffle(array).map((card) => ({
+    ...card,
+    id: crypto.randomUUID(),
+  }));
 };
 
 export const generateCardsByLevel = (level) => {
