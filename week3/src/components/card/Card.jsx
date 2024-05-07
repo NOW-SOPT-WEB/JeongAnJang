@@ -11,7 +11,7 @@ const Card = (props) => {
   };
 
   return (
-    <S.CardContainer className="card">
+    <S.CardContainer>
       <S.FrontImage src={card.src} alt="card front" $flipped={flipped} />
       <S.BackImage
         src={cover}
