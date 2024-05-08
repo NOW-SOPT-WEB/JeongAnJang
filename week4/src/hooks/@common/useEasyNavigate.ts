@@ -5,7 +5,7 @@ const useEasyNavigate = () => {
   const navigate = useNavigate();
 
   const goHome = () => navigate(PATH.HOME);
-  const goMypage = () => navigate(PATH.MYPAGE);
+  const goMypage = (id: string) => navigate(PATH.MYPAGE.replace(":id", id));
   const goSignup = () => navigate(PATH.SIGNUP);
   const goBack = () => navigate(-1);
 
