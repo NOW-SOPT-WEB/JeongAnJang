@@ -3,20 +3,14 @@ import Button from "../components/@common/Button";
 import useEasyNavigate from "../hooks/@common/useEasyNavigate";
 import { CommonInput } from "../components/@common/Input";
 import { useState } from "react";
+import CommonSubTitle from "../components/@common/SubTitle";
+import useEnterInput from "../hooks/@common/useEnterInput";
 
 const LoginPage = () => {
   const { goMypage, goSignup } = useEasyNavigate();
 
-  const [id, setId] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setId(e.target.value);
-  };
-
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
-  };
+  const { id, password, handleIdChange, handlePasswordChange } =
+    useEnterInput();
 
   return (
     <>
@@ -29,12 +23,12 @@ const LoginPage = () => {
         />
         <InputWrapper>
           <InputContainer>
-            <SubTitle>Id :</SubTitle>
+            <CommonSubTitle>Id :</CommonSubTitle>
             <CommonInput onChange={handleIdChange} />
             {!id && <ErrorMessage>Id를 입력해주세요</ErrorMessage>}
           </InputContainer>
           <InputContainer>
-            <SubTitle>Password :</SubTitle>
+            <CommonSubTitle>Password :</CommonSubTitle>
             <CommonInput onChange={handlePasswordChange} />
             {!password && (
               <ErrorMessage>Password를 입력해주세요</ErrorMessage>
@@ -74,10 +68,6 @@ const InputWrapper = styled.div`
 
 const InputContainer = styled.div`
   ${({ theme }) => theme.mixin.flexCenter({ direction: "row" })};
-`;
-
-const SubTitle = styled.h2`
-  font-size: 2rem;
 `;
 
 const ErrorMessage = styled.p`
