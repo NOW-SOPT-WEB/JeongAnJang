@@ -15,7 +15,6 @@ export default Input;
 export const CommonInput = styled.input`
   ${({ theme }) =>
     theme.mixin.flexBox({ align: "center", justify: "space-between" })};
-  width: 100%;
   height: 3.5rem;
   outline: none;
   padding: 0;
