@@ -2,10 +2,12 @@ import styled from "styled-components";
 
 interface SubTitleProps {
   children: React.ReactNode;
+  customStyle?: React.CSSProperties;
 }
 
-const CommonSubTitle = ({ children }: SubTitleProps) => {
-  return <SubTitle>{children}</SubTitle>;
+const CommonSubTitle = (props: SubTitleProps) => {
+  const { children, customStyle } = props;
+  return <SubTitle style={customStyle}>{children}</SubTitle>;
 };
 
 export default CommonSubTitle;
