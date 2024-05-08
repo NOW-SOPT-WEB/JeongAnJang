@@ -7,11 +7,13 @@ const useEasyNavigate = () => {
   const goHome = () => navigate(PATH.HOME);
   const goMypage = () => navigate(PATH.MYPAGE);
   const goSignup = () => navigate(PATH.SIGNUP);
+  const goBack = () => navigate(-1);
 
   return {
     goHome,
     goMypage,
     goSignup,
+    goBack,
   };
 };
 
