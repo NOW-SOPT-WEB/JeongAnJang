@@ -2,15 +2,31 @@ import styled from "styled-components";
 import Button from "../components/@common/Button";
 import useEasyNavigate from "../hooks/@common/useEasyNavigate";
 import { CommonInput } from "../components/@common/Input";
-import { useState } from "react";
 import CommonSubTitle from "../components/@common/SubTitle";
 import useEnterInput from "../hooks/@common/useEnterInput";
+import { post } from "../api/client";
 
 const LoginPage = () => {
   const { goMypage, goSignup } = useEasyNavigate();
 
   const { id, password, handleIdChange, handlePasswordChange } =
     useEnterInput();
+
+  const handleLogin = async () => {
+    try {
+      const response = await post(
+        `${import.meta.env.VITE_APP_BASE_URL}/member/login`,
+        {
+          authenticationId: id,
+          password,
+        }
+      );
+      const path = response.headers.location;
+      goMypage(path);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -37,7 +53,7 @@ const LoginPage = () => {
         </InputWrapper>
         <ButtonWrapper>
           <Button onClick={goSignup}>회원가입</Button>
-          <Button onClick={goMypage}>내 정보</Button>
+          <Button onClick={handleLogin}>로그인</Button>
         </ButtonWrapper>
       </LoginPageWrapper>
     </>
