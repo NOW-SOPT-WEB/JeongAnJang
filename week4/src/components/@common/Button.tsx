@@ -8,7 +8,9 @@ const Button = (props: ButtonProps) => {
   const { children, ...rest } = props;
   return (
     <Wrapper>
-      <button {...rest}>{children} </button>
+      <button type="button" {...rest}>
+        {children}
+      </button>
     </Wrapper>
   );
 };
