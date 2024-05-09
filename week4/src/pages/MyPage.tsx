@@ -128,6 +128,9 @@ const MyPage = () => {
               비밀번호 변경
             </Button>
           </details>
+          <Button type="button" onClick={goHome}>
+            홈으로
+          </Button>
         </>
       )}
     </MyPageWrapper>
