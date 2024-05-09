@@ -37,6 +37,7 @@ const SignupPage = () => {
     }
     if (validatePassword(password)) {
       alert(MESSAGE.NOT_FOLLOW_PASSWORD_FORMAT);
+      return;
     }
     if (!nickname) {
       alert(MESSAGE.ENTER_EMPTY_NICKNAME);
