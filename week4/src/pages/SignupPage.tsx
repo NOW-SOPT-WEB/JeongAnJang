@@ -71,16 +71,28 @@ const SignupPage = () => {
 
       <InputContainer>
         <CommonSubTitle>Password</CommonSubTitle>
-        <CommonInput
-          value={password}
-          type="password"
-          onChange={handlePasswordChange}
-          $inputValue={!!password}
-        />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.5rem",
+          }}
+        >
+          <CommonInput
+            value={password}
+            type="password"
+            onChange={handlePasswordChange}
+            $inputValue={!!password}
+          />
+          <ValidateSection>
+            {MESSAGE.NOT_FOLLOW_PASSWORD_FORMAT}
+          </ValidateSection>
+        </div>
       </InputContainer>
 
       <InputContainer>
         <CommonSubTitle>닉네임</CommonSubTitle>
+
         <CommonInput
           value={nickname}
           onChange={handleNickNameChange}
@@ -90,12 +102,17 @@ const SignupPage = () => {
 
       <InputContainer>
         <CommonSubTitle>전화번호</CommonSubTitle>
-        <CommonInput
-          value={phone}
-          onChange={handlePhoneNumberChange}
-          $inputValue={!!phone}
-          maxLength={13}
-        />
+        <div
+          style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}
+        >
+          <CommonInput
+            value={phone}
+            onChange={handlePhoneNumberChange}
+            $inputValue={!!phone}
+            maxLength={13}
+          />
+          <ValidateSection>{MESSAGE.NOT_FOLLOW_PHONE_FORMAT}</ValidateSection>
+        </div>
       </InputContainer>
       <ButtonContainer>
         <Button type="submit" onClick={postData}>
@@ -124,4 +141,10 @@ const InputContainer = styled.div`
 const ButtonContainer = styled.div`
   ${({ theme }) => theme.mixin.flexBox({ align: "center", justify: "center" })};
   gap: 2rem;
+`;
+
+const ValidateSection = styled.div`
+  ${({ theme }) => theme.mixin.flexBox({ align: "center", justify: "center" })};
+  color: blue;
+  font-size: 1rem;
 `;
