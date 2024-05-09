@@ -6,9 +6,11 @@ import CommonSubTitle from "../components/@common/SubTitle";
 import useEnterInput from "../hooks/@common/useEnterInput";
 import { post } from "../api/client";
 import { MESSAGE } from "../constants/message";
+import { useMemberContext } from "../context/MemberContext";
 
 const LoginPage = () => {
-  const { goMypage, goSignup } = useEasyNavigate();
+  const { goSignup, goHome } = useEasyNavigate();
+  const { updateMemberInfo } = useMemberContext();
 
   const { id, password, handleIdChange, handlePasswordChange } =
     useEnterInput();
@@ -23,9 +25,12 @@ const LoginPage = () => {
             password,
           }
         );
-        const path = response.headers.location;
+        console.log(response.headers.location);
         alert(MESSAGE.SUCCESS_LOGIN);
-        goMypage(path);
+        updateMemberInfo({
+          memberId: response.headers.location,
+        });
+        goHome();
       } catch (error) {
         alert(MESSAGE.FAIL_LOGIN);
         console.log(error);

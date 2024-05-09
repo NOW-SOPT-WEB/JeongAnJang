@@ -6,9 +6,11 @@ import Button from "../components/@common/Button";
 import useEnterInput from "../hooks/@common/useEnterInput";
 import { post } from "../api/client";
 import { MESSAGE } from "../constants/message";
+import { useMemberContext } from "../context/MemberContext";
 
 const SignupPage = () => {
   const { goBack, goHome } = useEasyNavigate();
+
   const {
     id,
     password,
@@ -20,6 +22,7 @@ const SignupPage = () => {
     handlePhoneNumberChange,
     validatePassword,
   } = useEnterInput();
+  const { updateMemberInfo } = useMemberContext();
 
   const authenticationId = id;
 
@@ -55,9 +58,11 @@ const SignupPage = () => {
         }
       );
       console.log(response);
+      updateMemberInfo({
+        memberId: response.headers.location,
+      });
       alert(MESSAGE.SUCCESS_SIGNUP);
       goHome();
-      // goMypage(path);
     } catch (error) {
       console.log(error);
     }
