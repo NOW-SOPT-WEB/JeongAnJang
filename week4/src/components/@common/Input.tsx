@@ -12,13 +12,15 @@ const Input = (props: InputProps) => {
 
 export default Input;
 
-export const CommonInput = styled.input`
+export const CommonInput = styled.input<{ $inputValue?: boolean }>`
   ${({ theme }) =>
     theme.mixin.flexBox({ align: "center", justify: "space-between" })};
   height: 3.5rem;
   outline: none;
   padding: 0;
   color: black;
+
+  ${(props) => !props.$inputValue && `border: 1px solid red`};
 
   input::placeholder {
     color: gray;
