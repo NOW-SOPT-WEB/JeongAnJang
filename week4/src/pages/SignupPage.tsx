@@ -8,7 +8,7 @@ import { post } from "../api/client";
 import { MESSAGE } from "../constants/message";
 
 const SignupPage = () => {
-  const { goBack, goMypage, goHome } = useEasyNavigate();
+  const { goBack, goHome } = useEasyNavigate();
   const {
     id,
     password,
@@ -23,6 +23,23 @@ const SignupPage = () => {
   const authenticationId = id;
 
   const postData = async () => {
+    if (!id) {
+      alert(MESSAGE.ENTER_EMPTY_ID);
+      return;
+    }
+    if (!password) {
+      alert(MESSAGE.ENTER_EMPTY_PASSWORD);
+      return;
+    }
+    if (!nickname) {
+      alert(MESSAGE.ENTER_EMPTY_NICKNAME);
+      return;
+    }
+    if (!phone) {
+      alert(MESSAGE.ENTER_EMPTY_PHONE);
+      return;
+    }
+
     try {
       const response = await post(
         `${import.meta.env.VITE_APP_BASE_URL}/member/join`,
@@ -33,7 +50,7 @@ const SignupPage = () => {
           phone,
         }
       );
-      const path = response.headers.location;
+      console.log(response);
       alert(MESSAGE.SUCCESS_SIGNUP);
       goHome();
       // goMypage(path);
@@ -41,12 +58,11 @@ const SignupPage = () => {
       console.log(error);
     }
   };
-
   return (
     <SignupPageWrapper>
       <InputContainer>
         <CommonSubTitle>ID</CommonSubTitle>
-        <CommonInput value={id} onChange={handleIdChange} />
+        <CommonInput value={id} onChange={handleIdChange} $inputValue={!!id} />
       </InputContainer>
 
       <InputContainer>
@@ -55,17 +71,27 @@ const SignupPage = () => {
           value={password}
           type="password"
           onChange={handlePasswordChange}
+          $inputValue={!!password}
         />
       </InputContainer>
 
       <InputContainer>
         <CommonSubTitle>닉네임</CommonSubTitle>
-        <CommonInput value={nickname} onChange={handleNickNameChange} />
+        <CommonInput
+          value={nickname}
+          onChange={handleNickNameChange}
+          $inputValue={!!nickname}
+        />
       </InputContainer>
 
       <InputContainer>
         <CommonSubTitle>전화번호</CommonSubTitle>
-        <CommonInput value={phone} onChange={handlePhoneNumberChange} />
+        <CommonInput
+          value={phone}
+          onChange={handlePhoneNumberChange}
+          $inputValue={!!phone}
+          maxLength={13}
+        />
       </InputContainer>
       <ButtonContainer>
         <Button type="submit" onClick={postData}>
