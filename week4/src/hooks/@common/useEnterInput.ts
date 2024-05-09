@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { MESSAGE } from "../../constants/message";
 
 const useEnterInput = () => {
   const [id, setId] = useState("");
@@ -31,6 +32,17 @@ const useEnterInput = () => {
     );
     setPhone(formattedPhoneNumber);
   };
+
+  const validatePassword = (password: string) => {
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const isValidPassword = passwordRegex.test(password);
+    if (!isValidPassword) {
+      alert(MESSAGE.NOT_FOLLOW_PASSWORD_FORMAT);
+      return true;
+    }
+  };
+
   return {
     id,
     password,
@@ -40,6 +52,7 @@ const useEnterInput = () => {
     handlePasswordChange,
     handleNickNameChange,
     handlePhoneNumberChange,
+    validatePassword,
   };
 };
 

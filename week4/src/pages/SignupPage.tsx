@@ -18,6 +18,7 @@ const SignupPage = () => {
     handlePasswordChange,
     handleNickNameChange,
     handlePhoneNumberChange,
+    validatePassword,
   } = useEnterInput();
 
   const authenticationId = id;
@@ -30,6 +31,9 @@ const SignupPage = () => {
     if (!password) {
       alert(MESSAGE.ENTER_EMPTY_PASSWORD);
       return;
+    }
+    if (validatePassword(password)) {
+      alert(MESSAGE.NOT_FOLLOW_PASSWORD_FORMAT);
     }
     if (!nickname) {
       alert(MESSAGE.ENTER_EMPTY_NICKNAME);
