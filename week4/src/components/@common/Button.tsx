@@ -8,9 +8,9 @@ const Button = (props: ButtonProps) => {
   const { children, ...rest } = props;
   return (
     <Wrapper>
-      <button type="button" {...rest}>
+      <CommonButton type="button" {...rest}>
         {children}
-      </button>
+      </CommonButton>
     </Wrapper>
   );
 };
@@ -26,6 +26,10 @@ const Wrapper = styled.div`
   border-radius: 9.9rem;
 
   background-color: pink;
-  color: white;
+`;
+
+const CommonButton = styled.button`
   border: none;
+  color: black;
+  background-color: pink;
 `;
