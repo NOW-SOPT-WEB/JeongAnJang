@@ -11,6 +11,7 @@ export const MESSAGE = Object.freeze({
   FAIL_LOGIN: "로그인에 실패했습니다.",
   SUCCESS_SIGNUP: "회원가입 성공",
   ALREADY_EXIST_ID: "중복된 아이디 입니다.",
-  NOW_FOLLOW_PASSWORD_FORMAT: "비밀번호 형식을 지켜주세요.",
-  NOW_FOLLOW_PHONE_FORMAT: "전화번호 형식을 지켜주세요.",
+  NOT_FOLLOW_PASSWORD_FORMAT:
+    "비밀번호가 형식(최소8글자 이상, 숫자, 문자(a-z, A-Z), 특수 문자 포함)에 맞지 않습니다.",
+  NOT_FOLLOW_PHONE_FORMAT: "전화번호 형식은 010-****-****입니다.",
 });
