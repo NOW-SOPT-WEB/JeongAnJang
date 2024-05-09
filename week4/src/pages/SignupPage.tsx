@@ -5,9 +5,10 @@ import useEasyNavigate from "../hooks/@common/useEasyNavigate";
 import Button from "../components/@common/Button";
 import useEnterInput from "../hooks/@common/useEnterInput";
 import { post } from "../api/client";
+import { MESSAGE } from "../constants/message";
 
 const SignupPage = () => {
-  const { goBack, goMypage } = useEasyNavigate();
+  const { goBack, goMypage, goHome } = useEasyNavigate();
   const {
     id,
     password,
@@ -23,8 +24,6 @@ const SignupPage = () => {
 
   const postData = async () => {
     try {
-      console.log("전달되는 데이터:", { id, password, nickname, phone });
-
       const response = await post(
         `${import.meta.env.VITE_APP_BASE_URL}/member/join`,
         {
@@ -34,8 +33,10 @@ const SignupPage = () => {
           phone,
         }
       );
-      goMypage();
-      console.log(response);
+      const path = response.headers.location;
+      alert(MESSAGE.SUCCESS_SIGNUP);
+      goHome();
+      // goMypage(path);
     } catch (error) {
       console.log(error);
     }
