@@ -32,7 +32,7 @@ const LoginPage = () => {
         });
         goHome();
       } catch (error) {
-        alert(MESSAGE.FAIL_LOGIN);
+        alert(error.response.data.message);
         console.log(error);
       }
     } else {
