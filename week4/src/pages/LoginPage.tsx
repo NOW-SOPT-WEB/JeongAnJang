@@ -30,9 +30,9 @@ const LoginPage = () => {
         alert(MESSAGE.FAIL_LOGIN);
         console.log(error);
       }
+    } else {
+      alert(MESSAGE.FAIL_LOGIN);
     }
-
-    return;
   };
 
   return (
