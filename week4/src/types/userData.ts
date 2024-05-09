@@ -3,3 +3,7 @@ export interface UserData {
   nickname: string;
   phone: string;
 }
+
+export interface UserInfo {
+  memberId: string;
+}
