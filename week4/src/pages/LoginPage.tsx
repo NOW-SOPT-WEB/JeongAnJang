@@ -5,6 +5,7 @@ import { CommonInput } from "../components/@common/Input";
 import CommonSubTitle from "../components/@common/SubTitle";
 import useEnterInput from "../hooks/@common/useEnterInput";
 import { post } from "../api/client";
+import { MESSAGE } from "../constants/message";
 
 const LoginPage = () => {
   const { goMypage, goSignup } = useEasyNavigate();
@@ -13,19 +14,25 @@ const LoginPage = () => {
     useEnterInput();
 
   const handleLogin = async () => {
-    try {
-      const response = await post(
-        `${import.meta.env.VITE_APP_BASE_URL}/member/login`,
-        {
-          authenticationId: id,
-          password,
-        }
-      );
-      const path = response.headers.location;
-      goMypage(path);
-    } catch (error) {
-      console.log(error);
+    if (id && password) {
+      try {
+        const response = await post(
+          `${import.meta.env.VITE_APP_BASE_URL}/member/login`,
+          {
+            authenticationId: id,
+            password,
+          }
+        );
+        const path = response.headers.location;
+        alert(MESSAGE.SUCCESS_LOGIN);
+        goMypage(path);
+      } catch (error) {
+        alert(MESSAGE.FAIL_LOGIN);
+        console.log(error);
+      }
     }
+
+    return;
   };
 
   return (
