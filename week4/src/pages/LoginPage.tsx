@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import Button from "../components/@common/Button";
 import useEasyNavigate from "../hooks/@common/useEasyNavigate";
 import { CommonInput } from "../components/@common/Input";
@@ -7,10 +6,14 @@ import useEnterInput from "../hooks/@common/useEnterInput";
 import { post } from "../api/client";
 import { MESSAGE } from "../constants/message";
 import { useMemberContext } from "../context/MemberContext";
+import styled from "styled-components";
+import { useState } from "react";
 
 const LoginPage = () => {
   const { goSignup, goHome } = useEasyNavigate();
   const { updateMemberInfo } = useMemberContext();
+  const [idErrorMessage, setIdErrorMessage] = useState("");
+  const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
 
   const { id, password, handleIdChange, handlePasswordChange } =
     useEnterInput();
@@ -35,9 +38,30 @@ const LoginPage = () => {
         alert(error.response.data.message);
         console.log(error);
       }
+    } else if (id && !password) {
+      alert(MESSAGE.ENTER_EMPTY_PASSWORD);
+      setPasswordErrorMessage(MESSAGE.ENTER_EMPTY_ID);
+    } else if (!id && password) {
+      alert(MESSAGE.ENTER_EMPTY_ID);
+      setIdErrorMessage(MESSAGE.ENTER_EMPTY_PASSWORD);
     } else {
       alert(MESSAGE.FAIL_LOGIN);
+
+      setIdErrorMessage(MESSAGE.ENTER_EMPTY_ID);
+      // setPasswordErrorMessage(MESSAGE.ENTER_EMPTY_PASSWORD);
     }
+  };
+
+  const handleIdInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    handleIdChange(e);
+    setIdErrorMessage("");
+  };
+
+  const handlePasswordInputChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    handlePasswordChange(e);
+    setPasswordErrorMessage("");
   };
 
   return (
@@ -52,13 +76,15 @@ const LoginPage = () => {
         <InputWrapper>
           <InputContainer>
             <CommonSubTitle>Id :</CommonSubTitle>
-            <CommonInput onChange={handleIdChange} />
-            {!id && <ErrorMessage>Id를 입력해주세요</ErrorMessage>}
+            <CommonInput onChange={handleIdInputChange} />
+            {idErrorMessage && (
+              <ErrorMessage>Id를 입력해주세요</ErrorMessage>
+            )}
           </InputContainer>
           <InputContainer>
             <CommonSubTitle>Password :</CommonSubTitle>
-            <CommonInput onChange={handlePasswordChange} />
-            {!password && (
+            <CommonInput onChange={handlePasswordInputChange} />
+            {passwordErrorMessage && (
               <ErrorMessage>Password를 입력해주세요</ErrorMessage>
             )}
           </InputContainer>
