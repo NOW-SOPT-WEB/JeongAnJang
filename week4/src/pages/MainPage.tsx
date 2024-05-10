@@ -14,7 +14,8 @@ const MainPage = () => {
       <h1 style={{ fontSize: "9rem" }}>아래 두 영상의 차이점은?</h1>
       <ReactPlayer url="https://www.youtube.com/shorts/mZPkoLfdGQg" />
       {/* muted={true} => 자동재생 기능  */}
-      <ReactPlayer url={leeJinChu} playing controls muted={true} />
+      {/* loop => 무한재생 기능 */}
+      <ReactPlayer url={leeJinChu} playing controls muted={true} loop />
       <ButtonContainer>
         <Button onClick={() => goMypage(memberInfo.memberId)}>내 정보</Button>
         <Button onClick={goSignup}>회원가입</Button>
