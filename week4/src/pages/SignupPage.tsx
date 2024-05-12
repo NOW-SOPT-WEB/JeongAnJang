@@ -7,6 +7,7 @@ import useEnterInput from "../hooks/@common/useEnterInput";
 import { post } from "../api/client";
 import { MESSAGE } from "../constants/message";
 import { useMemberContext } from "../context/MemberContext";
+import { useEffect, useRef, useState } from "react";
 
 const SignupPage = () => {
   const { goBack, goHome } = useEasyNavigate();
@@ -23,16 +24,29 @@ const SignupPage = () => {
     validatePassword,
   } = useEnterInput();
   const { updateMemberInfo } = useMemberContext();
+  const [emptyId, setEmptyId] = useState(false);
+  const [emptyPassword, setEmptyPassword] = useState(false);
+  const [emptyNickname, setEmptyNickname] = useState(false);
+  const [emptyPhone, setEmptyPhone] = useState(false);
+
+  const idInputRef = useRef(null);
+  const passwordInputRef = useRef(null);
+  const nicknameInputRef = useRef(null);
+  const phoneInputRef = useRef(null);
 
   const authenticationId = id;
 
   const postData = async () => {
     if (!id) {
       alert(MESSAGE.ENTER_EMPTY_ID);
+      setEmptyId(true);
+      idInputRef.current?.focus();
       return;
     }
     if (!password) {
       alert(MESSAGE.ENTER_EMPTY_PASSWORD);
+      setEmptyPassword(true);
+      passwordInputRef.current?.focus();
       return;
     }
     if (validatePassword(password)) {
@@ -41,10 +55,14 @@ const SignupPage = () => {
     }
     if (!nickname) {
       alert(MESSAGE.ENTER_EMPTY_NICKNAME);
+      setEmptyNickname(true);
+      nicknameInputRef.current?.focus();
       return;
     }
     if (!phone) {
       alert(MESSAGE.ENTER_EMPTY_PHONE);
+      setEmptyPhone(true);
+      phoneInputRef.current?.focus();
       return;
     }
 
@@ -52,7 +70,7 @@ const SignupPage = () => {
       const response = await post(
         `${import.meta.env.VITE_APP_BASE_URL}/member/join`,
         {
-          authenticationId,
+          authenticationId: id,
           password,
           nickname,
           phone,
@@ -65,14 +83,36 @@ const SignupPage = () => {
       alert(MESSAGE.SUCCESS_SIGNUP);
       goHome();
     } catch (error) {
+      alert(error.response.data.message);
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    if (emptyId && idInputRef.current) {
+      idInputRef.current.focus();
+    }
+    if (emptyPassword && passwordInputRef.current) {
+      passwordInputRef.current.focus();
+    }
+    if (emptyNickname && nicknameInputRef.current) {
+      nicknameInputRef.current.focus();
+    }
+    if (emptyPhone && phoneInputRef.current) {
+      phoneInputRef.current.focus();
+    }
+  }, [emptyId, emptyPassword, emptyNickname, emptyPhone]);
+
   return (
     <SignupPageWrapper>
       <InputContainer>
         <CommonSubTitle>ID</CommonSubTitle>
-        <CommonInput value={id} onChange={handleIdChange} $inputValue={!!id} />
+        <CommonInput
+          value={id}
+          onChange={handleIdChange}
+          $inputValue={!emptyId}
+          ref={idInputRef}
+        />
       </InputContainer>
 
       <InputContainer>
@@ -88,7 +128,8 @@ const SignupPage = () => {
             value={password}
             type="password"
             onChange={handlePasswordChange}
-            $inputValue={!!password}
+            $inputValue={!emptyPassword}
+            ref={passwordInputRef}
           />
           <ValidateSection>
             {MESSAGE.NOT_FOLLOW_PASSWORD_FORMAT}
@@ -98,11 +139,11 @@ const SignupPage = () => {
 
       <InputContainer>
         <CommonSubTitle>닉네임</CommonSubTitle>
-
         <CommonInput
           value={nickname}
           onChange={handleNickNameChange}
-          $inputValue={!!nickname}
+          $inputValue={!emptyNickname}
+          ref={nicknameInputRef}
         />
       </InputContainer>
 
@@ -114,8 +155,9 @@ const SignupPage = () => {
           <CommonInput
             value={phone}
             onChange={handlePhoneNumberChange}
-            $inputValue={!!phone}
+            $inputValue={!emptyPhone}
             maxLength={13}
+            ref={phoneInputRef}
           />
           <ValidateSection>{MESSAGE.NOT_FOLLOW_PHONE_FORMAT}</ValidateSection>
         </div>

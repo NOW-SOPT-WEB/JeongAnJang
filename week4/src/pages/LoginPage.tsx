@@ -29,6 +29,8 @@ const LoginPage = () => {
           }
         );
         console.log(response.headers.location);
+        console.log("response", response);
+
         alert(MESSAGE.SUCCESS_LOGIN);
         updateMemberInfo({
           memberId: response.headers.location,
@@ -48,7 +50,6 @@ const LoginPage = () => {
       alert(MESSAGE.FAIL_LOGIN);
 
       setIdErrorMessage(MESSAGE.ENTER_EMPTY_ID);
-      // setPasswordErrorMessage(MESSAGE.ENTER_EMPTY_PASSWORD);
     }
   };
 

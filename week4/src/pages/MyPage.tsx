@@ -46,6 +46,9 @@ const MyPage = () => {
   }, [memberId]);
 
   const handleSubmit = async () => {
+    if (!id || !password || !nickname) {
+      return;
+    }
     try {
       const response = await patch(
         `${import.meta.env.VITE_APP_BASE_URL}/member/password`,
