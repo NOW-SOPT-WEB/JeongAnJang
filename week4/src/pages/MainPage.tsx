@@ -1,5 +1,5 @@
 import ReactPlayer from "react-player";
-import leeJinChu from "../assets/이진츄.mp4";
+import leeJinChu from "../assets/이진츄.mp4";
 import Button from "../components/@common/Button";
 import useEasyNavigate from "../hooks/@common/useEasyNavigate";
 import { useMemberContext } from "../context/MemberContext";
