@@ -2,68 +2,19 @@ import Button from "../components/@common/Button";
 import useEasyNavigate from "../hooks/@common/useEasyNavigate";
 import { CommonInput } from "../components/@common/Input";
 import CommonSubTitle from "../components/@common/SubTitle";
-import useEnterInput from "../hooks/@common/useEnterInput";
-import { post } from "../api/client";
-import { MESSAGE } from "../constants/message";
-import { useMemberContext } from "../context/MemberContext";
+import useLogin from "../hooks/@common/useLogin";
 import styled from "styled-components";
-import { useState } from "react";
 
 const LoginPage = () => {
-  const { goSignup, goHome } = useEasyNavigate();
-  const { updateMemberInfo } = useMemberContext();
-  const [idErrorMessage, setIdErrorMessage] = useState("");
-  const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
+  const {
+    handleIdChange,
+    handlePasswordChange,
+    handleLogin,
+    idErrorMessage,
+    passwordErrorMessage,
+  } = useLogin();
 
-  const { id, password, handleIdChange, handlePasswordChange } =
-    useEnterInput();
-
-  const handleLogin = async () => {
-    if (id && password) {
-      try {
-        const response = await post(
-          `${import.meta.env.VITE_APP_BASE_URL}/member/login`,
-          {
-            authenticationId: id,
-            password,
-          }
-        );
-        console.log(response.headers.location);
-        console.log("response", response);
-
-        alert(MESSAGE.SUCCESS_LOGIN);
-        updateMemberInfo({
-          memberId: response.headers.location,
-        });
-        goHome();
-      } catch (error) {
-        alert(error.response.data.message);
-        console.log(error);
-      }
-    } else if (id && !password) {
-      alert(MESSAGE.ENTER_EMPTY_PASSWORD);
-      setPasswordErrorMessage(MESSAGE.ENTER_EMPTY_ID);
-    } else if (!id && password) {
-      alert(MESSAGE.ENTER_EMPTY_ID);
-      setIdErrorMessage(MESSAGE.ENTER_EMPTY_PASSWORD);
-    } else {
-      alert(MESSAGE.FAIL_LOGIN);
-
-      setIdErrorMessage(MESSAGE.ENTER_EMPTY_ID);
-    }
-  };
-
-  const handleIdInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    handleIdChange(e);
-    setIdErrorMessage("");
-  };
-
-  const handlePasswordInputChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    handlePasswordChange(e);
-    setPasswordErrorMessage("");
-  };
+  const { goSignup } = useEasyNavigate();
 
   return (
     <>
@@ -77,14 +28,14 @@ const LoginPage = () => {
         <InputWrapper>
           <InputContainer>
             <CommonSubTitle>Id :</CommonSubTitle>
-            <CommonInput onChange={handleIdInputChange} />
+            <CommonInput onChange={handleIdChange} />
             {idErrorMessage && (
               <ErrorMessage>Id를 입력해주세요</ErrorMessage>
             )}
           </InputContainer>
           <InputContainer>
             <CommonSubTitle>Password :</CommonSubTitle>
-            <CommonInput onChange={handlePasswordInputChange} />
+            <CommonInput onChange={handlePasswordChange} />
             {passwordErrorMessage && (
               <ErrorMessage>Password를 입력해주세요</ErrorMessage>
             )}
