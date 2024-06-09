@@ -1,0 +1,358 @@
+@import url("./reset.scss");
+header {
+  position: fixed;
+  width: 100%;
+  height: 5rem;
+  color: #f5d042;
+  background-color: #0a174e;
+  font-size: 1rem;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+}
+header h2 {
+  color: #f5d042;
+  font-size: 2rem;
+}
+header i {
+  cursor: pointer;
+}
+
+.nav {
+  position: fixed;
+  width: 10%;
+  height: 20%;
+  top: 30%;
+  gap: 1rem;
+  background-color: #0a174e;
+  border-radius: 2rem;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.nav h2 {
+  color: #f5d042;
+  font-size: 2rem;
+}
+.nav ul {
+  list-style-type: none;
+  gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.nav ul div {
+  color: #f5d042;
+}
+
+.product_category_wrapper {
+  display: flex;
+}
+
+.nav li:hover {
+  background-color: green;
+}
+.nav li:hover a {
+  color: white;
+}
+
+.slide_section_wrapper {
+  position: relative;
+  top: 4rem;
+  width: 100%;
+  height: 15rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide_animation_section {
+  display: flex;
+  overflow: hidden;
+  max-width: 60%;
+}
+
+.banner_list {
+  display: flex;
+  width: 100%;
+  animation: sliderAnimation 10s linear infinite;
+}
+
+ul li {
+  list-style: none;
+  width: 100%;
+}
+
+.banner_list .n1:last-child {
+  animation-delay: 10s;
+}
+
+@keyframes sliderAnimation {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+.slide_img {
+  height: 8rem;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  margin-left: 15rem;
+}
+
+section > h2 {
+  padding-top: 5rem;
+}
+
+.product_card_wrapper {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
+}
+@media screen and (max-width: 1460px) {
+  .product_card_wrapper {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media screen and (max-width: 1260px) {
+  .product_card_wrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (max-width: 1080px) {
+  .product_card_wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .product_card_wrapper .product_card {
+    width: 100%;
+    height: auto;
+  }
+  .product_card_wrapper .product_card img,
+  .product_card_wrapper .product_card i,
+  .product_card_wrapper .product_card p {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 768px) {
+  .product_card_wrapper {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .product_card_wrapper .product_card {
+    width: 100%;
+    height: auto;
+  }
+  .product_card_wrapper .product_card img,
+  .product_card_wrapper .product_card i,
+  .product_card_wrapper .product_card p {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.product_card {
+  width: 13rem;
+  height: 17rem;
+  background-color: #0a174e;
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.product_card p {
+  margin: 0;
+  color: #f5d042;
+}
+.product_card i {
+  color: #f5d042;
+}
+
+.detail_product_card {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.product_card:hover {
+  animation: cardAnimation 2s infinite;
+}
+
+@keyframes cardAnimation {
+  25% {
+    transform: scale(1.3);
+    transition: all 1s;
+  }
+  50% {
+    transform: scale(1);
+    transition: all 1s;
+  }
+  75% {
+    transform: scale(1.3);
+    transition: all 1s;
+  }
+}
+.product_card_img {
+  width: 10rem;
+  height: 10rem;
+}
+
+i:hover {
+  color: red;
+}
+
+footer {
+  background-color: #0a174e;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+footer > h2 {
+  color: #f5d042;
+}
+
+.inner_body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  background: #222;
+  font-family: "Poppins", sans-serif;
+  z-index: 99;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.inner_body.open {
+  display: flex;
+}
+
+.side_bar {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 15rem;
+  height: 100%;
+  gap: 20rem;
+  background: #111;
+  transform: translateX(100%);
+  transition: all 0.7s ease;
+}
+
+.side_bar.open {
+  transition: all 0.7s ease;
+  transform: translateX(0);
+}
+
+.inner_body button {
+  display: inline-block;
+  border: 1px solid #eee;
+  color: #eee;
+  background-color: transparent;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  margin: 0 0.5rem;
+}
+.inner_body button:hover {
+  color: #f5d042;
+}
+
+.side_bar ul {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.side_bar ul li {
+  width: 100%;
+  padding: 1rem 10%;
+  cursor: pointer;
+}
+.side_bar ul li:hover {
+  color: #f5d042;
+}
+
+.side_bar ul li {
+  color: #eee;
+  text-decoration: none;
+}
+
+.product_list_title {
+  font-size: 5rem;
+}
+
+.img_card {
+  width: 5rem;
+  height: 5rem;
+}
+
+.cart_table_wrapper {
+  height: 25rem;
+  gap: 4rem;
+  overflow: auto;
+}
+
+.btn_wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.cart_page_wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  height: 50rem;
+  gap: 5rem;
+}
+
+.modal_product_img {
+  width: 7rem;
+  height: 7rem;
+}
+
+/*# sourceMappingURL=style.css.map */
